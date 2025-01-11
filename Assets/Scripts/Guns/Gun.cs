@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    public float gunId;
     public float hp;
     public bool isMovable;
     public bool isMoving;
