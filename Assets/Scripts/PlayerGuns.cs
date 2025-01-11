@@ -26,8 +26,8 @@ public class PlayerGuns : MonoBehaviour
     }
 
     void Awake() {
-        PlayerGuns();
-        CreateNewPlayerGunList();
+        // PlayerGuns();
+        // CreateNewPlayerGunList();
     }
 
     public void AddGun(PlayerGun gun)
@@ -40,11 +40,11 @@ public class PlayerGuns : MonoBehaviour
         Guns.Remove(gun);
     }
 
-    public void CreateNewPlayerGunList() {
+    // public void CreateNewPlayerGunList() {
         //TODO: go through all types on initial load
         //laser - TODO: change type
-        PlayerGun newLaser = PlayerGun.CreateNewPlayerGun(Laser);
-        AddGun(newLaser);
-    }
+        // PlayerGun newLaser = PlayerGun.CreateNewPlayerGun(Laser);
+        // AddGun(newLaser);
+    // }
 
 }
