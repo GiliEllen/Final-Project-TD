@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public float playerCubes;
     public float totalCubes;
     public float playerMana = 0;
+    public PlayerGuns playerGuns;
     void Start()
     {
         
