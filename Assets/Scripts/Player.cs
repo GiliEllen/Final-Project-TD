@@ -39,31 +39,31 @@ public class Player : MonoBehaviour
         Debug.Log($"Total Cubes: {totalCubes}, Player Cubes: {playerCubes}");
     }
 
-    public bool IsGameOver()
-    {
-        if (IsGameLost() || IsGameWon())
-        {
-            return true; 
-        }
-        return false; 
-    }
+    // public bool IsGameOver()
+    // {
+    //     if (IsGameLost() || IsGameWon())
+    //     {
+    //         return true; 
+    //     }
+    //     return false; 
+    // }
 
-    public bool IsGameWon()
-    {
-        if (playerCubes >= totalCubes * 0.95f) 
-        {
-            return true; 
-        }
-        return false; 
-    }
+    // public bool IsGameWon()
+    // {
+    //     if (playerCubes >= totalCubes * 0.95f) 
+    //     {
+    //         return true; 
+    //     }
+    //     return false; 
+    // }
 
-    public bool IsGameLost()
-    {
-        if (playerCubes <= totalCubes * 0.05f)
-        {
-            return true; 
-        }
-        return false; 
-    }
+    // public bool IsGameLost()
+    // {
+    //     if (playerCubes <= totalCubes * 0.05f)
+    //     {
+    //         return true; 
+    //     }
+    //     return false; 
+    // }
 
 }
