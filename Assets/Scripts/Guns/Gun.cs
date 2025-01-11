@@ -33,7 +33,7 @@ public class Gun : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    public levelUp(float addedHp = 0, float addedShotAmount = 0) {
+    public void levelUp(float addedHp = 0, float addedShotAmount = 0) {
           //TODO: add logic - change this parameters in PlayerGuns
         if (addedHp > 0) {
             hp += addedHp;
