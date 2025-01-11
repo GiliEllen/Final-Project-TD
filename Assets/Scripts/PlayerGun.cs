@@ -24,7 +24,7 @@ public class PlayerGun : MonoBehaviour
     public void CreateNewPlayerGun(Gun gunTemplate)
     {
         GunTemplate = gunTemplate;
-        Level = 1;
+        gunLevel = 1;
         gunHpAdded = 0;
         gunShotAmountAdded = 0;
         isActiveForPlayer = true;
