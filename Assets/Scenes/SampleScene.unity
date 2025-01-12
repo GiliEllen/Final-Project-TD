@@ -1914,7 +1914,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1694202641}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Cubes Board BK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
