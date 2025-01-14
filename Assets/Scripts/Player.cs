@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public float playerCubes;
     public float totalCubes;
     public float playerMana = 0;
-    public PlayerGuns playerGuns;
+    public PlayerToys playerToys;
     void Start()
     {
         
@@ -22,11 +22,11 @@ public class Player : MonoBehaviour
         playerMana += addedMana;
     }
 
-    //TODO: add Gun class
-    public void PlaceGun(string gun, Vector3 position) {
-        //TODO: place gun logic
+    //TODO: add Toy class
+    public void PlaceToy(string toy, Vector3 position) {
+        //TODO: place toy logic
         Debug.Log(position);
-        Debug.Log(gun);
+        Debug.Log(toy);
     }
 
     public void SetPlayerCubes()
