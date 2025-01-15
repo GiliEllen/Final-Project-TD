@@ -35,4 +35,16 @@ public class Ball : Toy
         Vector3 trajectory = BallTrajectory.CalculateTrajectory(GameObject.Find("center"), transform);
         rb.velocity = trajectory * speed;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision);
+        // Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        // if (enemy != null)
+        {
+            // enemy.TakeDamage(damageAmount);
+
+            // TakeDamage(damageAmount);
+        }
+    }
 }
