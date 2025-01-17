@@ -46,6 +46,6 @@ public class Ball : Toy
             enemy.TakeDamage(1);
 
             TakeDamage(hp);
-        }
+        } 
     }
 }
