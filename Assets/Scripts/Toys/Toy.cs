@@ -17,24 +17,24 @@ public class Toy : MonoBehaviour
 
 
     public void Shoot() {
-        //TODO: create shooting logic per gun logic
+        //TODO: create shooting logic per toy logic
     }
 
     public void TakeDamage(float howMuch) {
         hp -= howMuch;
         if (hp >= 0 ) {
-            DestroyGun();
+            DestroyToy();
         }
     }
 
-    public void DestroyGun() {
+    public void DestroyToy() {
         isAlive = false;
-        //TODO: add logic - remove from active playerGuns
+        //TODO: add logic - remove from active playerToys
         this.gameObject.SetActive(false);
     }
 
     public void levelUp(float addedHp = 0, float addedShotAmount = 0) {
-          //TODO: add logic - change this parameters in PlayerGuns
+          //TODO: add logic - change this parameters in PlayerToys
         if (addedHp > 0) {
             hp += addedHp;
         }
