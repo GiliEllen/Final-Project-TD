@@ -40,7 +40,7 @@ public class Ball : Toy
     {
         // Debug.Log(collision);
         Nightmare enemy = collision.gameObject.GetComponent<Nightmare>();
-        Debug.Log(enemy);
+        // Debug.Log(enemy);
         if (enemy != null)
         {
             enemy.TakeDamage(1);
