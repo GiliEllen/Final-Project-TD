@@ -22,23 +22,30 @@ public class PlacementSystem : MonoBehaviour
     private void Start()
     {
         StopPlacement();
-        inputManager.OnLongTouchStart += StartPlacementMode;
+
+        // Subscribe to InputManager events
         inputManager.OnDrag += UpdatePlacementIndicators;
         inputManager.OnDrop += PlaceStructure;
-        inputManager.OnCancelPlacement += StopPlacement;
+         Debug.Log("Subscribed to OnDrag and OnDrop events.");
     }
 
-    private void StartPlacementMode()
+   public void StartPlacementFromButton(int ID)
+{
+    Debug.Log("click");
+    StartPlacement(ID);
+    if (selectedObjectIndex >= 0)
     {
-        StartPlacement(0);
-        if (selectedObjectIndex >= 0)
-        {
-            gridVisualization.SetActive(true);
-            cellIndicator.SetActive(true);
-        }
+        Debug.Log($"Placement mode started for object ID: {ID}");
+        gridVisualization.SetActive(true);
+        cellIndicator.SetActive(true);
     }
+    else
+    {
+        Debug.LogWarning($"No valid object found for ID: {ID}");
+    }
+}
 
-    public void StartPlacement(int ID)
+    private void StartPlacement(int ID)
     {
         selectedObjectIndex = database.objectsData.FindIndex(data => data.ID == ID);
         if (selectedObjectIndex < 0)
@@ -62,6 +69,8 @@ public class PlacementSystem : MonoBehaviour
         Vector3 mousePosition = inputManager.GetSelectedMapPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
 
+        // Debug.Log($"Dragging. Mouse Position: {mousePosition}, Grid Position: {gridPosition}");
+
         mouseIndicator.transform.position = mousePosition;
         cellIndicator.transform.position = grid.CellToWorld(gridPosition);
     }
@@ -72,6 +81,8 @@ public class PlacementSystem : MonoBehaviour
 
         Vector3 mousePosition = inputManager.GetSelectedMapPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
+
+        Debug.Log($"Placing object at Grid Position: {gridPosition}");
 
         GameObject newObject = Instantiate(database.objectsData[selectedObjectIndex].Prefab);
         newObject.transform.position = grid.CellToWorld(gridPosition);

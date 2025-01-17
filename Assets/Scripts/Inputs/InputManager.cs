@@ -7,17 +7,13 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private Camera sceneCamera;
 
-    private Vector3 lastPosition;
+    private Vector3 lastPosition = Vector3.zero;
     [SerializeField]
     private LayerMask placementLayermask;
 
-    public event Action OnLongTouchStart, OnDrag, OnDrop, OnCancelPlacement;
+    public event Action OnDrag, OnDrop;
 
-    private float longTouchThreshold = 0.5f; 
-    private float touchStartTime;
-    private bool isLongTouch;
     private bool isTouching;
-    private Vector2 touchStartPosition;
 
     private void Update()
     {
@@ -30,33 +26,17 @@ public class InputManager : MonoBehaviour
 
     private void HandleMouseInput()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
-            touchStartTime = Time.time;
-            touchStartPosition = Input.mousePosition;
             isTouching = true;
-            isLongTouch = false;
-        }
-
-        if (Input.GetMouseButton(0) && isTouching)
-        {
-            if (Time.time - touchStartTime > longTouchThreshold && !isLongTouch)
-            {
-                isLongTouch = true;
-                OnLongTouchStart?.Invoke(); 
-            }
-
-            if (isLongTouch)
-            {
-                OnDrag?.Invoke(); 
-            }
+            OnDrag?.Invoke();
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            if (isLongTouch)
+            if (isTouching)
             {
-                OnDrop?.Invoke(); 
+                OnDrop?.Invoke();
             }
             isTouching = false;
         }
@@ -70,40 +50,16 @@ public class InputManager : MonoBehaviour
 
             switch (touch.phase)
             {
-                case TouchPhase.Began:
-                    touchStartTime = Time.time;
-                    touchStartPosition = touch.position;
-                    isTouching = true;
-                    isLongTouch = false;
-                    break;
-
-                case TouchPhase.Stationary:
                 case TouchPhase.Moved:
-                    if (isTouching && Time.time - touchStartTime > longTouchThreshold && !isLongTouch)
-                    {
-                        isLongTouch = true;
-                        OnLongTouchStart?.Invoke(); 
-                    }
-
-                    if (isLongTouch)
-                    {
-                        OnDrag?.Invoke(); 
-                    }
+                    OnDrag?.Invoke();
                     break;
 
                 case TouchPhase.Ended:
-                    if (isLongTouch)
-                    {
-                        OnDrop?.Invoke();
-                    }
-                    isTouching = false;
+                    OnDrop?.Invoke();
                     break;
             }
         }
     }
-
-    public bool IsPointerOverUI()
-        => EventSystem.current.IsPointerOverGameObject();
 
     public Vector3 GetSelectedMapPosition()
     {
