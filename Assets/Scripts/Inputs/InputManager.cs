@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,34 +8,109 @@ public class InputManager : MonoBehaviour
     private Camera sceneCamera;
 
     private Vector3 lastPosition;
-
     [SerializeField]
     private LayerMask placementLayermask;
-    public event Action OnClicked, OnExit;
 
-    private void Update() {
-        if (Input.GetMouseButtonDown(0))
-        {
-            OnClicked?.Invoke();
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            OnExit?.Invoke();
-        }
-            
+    public event Action OnLongTouchStart, OnDrag, OnDrop, OnCancelPlacement;
+
+    private float longTouchThreshold = 0.5f; 
+    private float touchStartTime;
+    private bool isLongTouch;
+    private bool isTouching;
+    private Vector2 touchStartPosition;
+
+    private void Update()
+    {
+#if UNITY_EDITOR
+        HandleMouseInput();
+#else
+        HandleTouchInput();
+#endif
     }
 
-    public bool IIsPointerOverUI()
+    private void HandleMouseInput()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            touchStartTime = Time.time;
+            touchStartPosition = Input.mousePosition;
+            isTouching = true;
+            isLongTouch = false;
+        }
+
+        if (Input.GetMouseButton(0) && isTouching)
+        {
+            if (Time.time - touchStartTime > longTouchThreshold && !isLongTouch)
+            {
+                isLongTouch = true;
+                OnLongTouchStart?.Invoke(); 
+            }
+
+            if (isLongTouch)
+            {
+                OnDrag?.Invoke(); 
+            }
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (isLongTouch)
+            {
+                OnDrop?.Invoke(); 
+            }
+            isTouching = false;
+        }
+    }
+
+    private void HandleTouchInput()
+    {
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            switch (touch.phase)
+            {
+                case TouchPhase.Began:
+                    touchStartTime = Time.time;
+                    touchStartPosition = touch.position;
+                    isTouching = true;
+                    isLongTouch = false;
+                    break;
+
+                case TouchPhase.Stationary:
+                case TouchPhase.Moved:
+                    if (isTouching && Time.time - touchStartTime > longTouchThreshold && !isLongTouch)
+                    {
+                        isLongTouch = true;
+                        OnLongTouchStart?.Invoke(); 
+                    }
+
+                    if (isLongTouch)
+                    {
+                        OnDrag?.Invoke(); 
+                    }
+                    break;
+
+                case TouchPhase.Ended:
+                    if (isLongTouch)
+                    {
+                        OnDrop?.Invoke();
+                    }
+                    isTouching = false;
+                    break;
+            }
+        }
+    }
+
+    public bool IsPointerOverUI()
         => EventSystem.current.IsPointerOverGameObject();
-    
 
     public Vector3 GetSelectedMapPosition()
     {
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = sceneCamera.nearClipPlane;
         Ray ray = sceneCamera.ScreenPointToRay(mousePos);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100, placementLayermask))
+        if (Physics.Raycast(ray, out RaycastHit hit, 100, placementLayermask))
         {
             lastPosition = hit.point;
         }
