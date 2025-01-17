@@ -38,13 +38,14 @@ public class Ball : Toy
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision);
-        // Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-        // if (enemy != null)
+        // Debug.Log(collision);
+        Nightmare enemy = collision.gameObject.GetComponent<Nightmare>();
+        Debug.Log(enemy);
+        if (enemy != null)
         {
-            // enemy.TakeDamage(damageAmount);
+            enemy.TakeDamage(1);
 
-            // TakeDamage(damageAmount);
+            TakeDamage(hp);
         }
     }
 }

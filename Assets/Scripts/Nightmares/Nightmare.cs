@@ -12,7 +12,7 @@ public class Nightmare : MonoBehaviour
     public GameObject plane;
 
     void Start() {
-        PositionNightmare();
+        // PositionNightmare();
     }
 
     
@@ -26,24 +26,24 @@ public class Nightmare : MonoBehaviour
     public void DestroyNightmare() {
         isAlive = false;
         //TODO: add logic - remove from active playerToys
-        // this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     public void Move() {
 
     }
 
-    public void PositionNightmare() {
-        float length = PlaneSizeExtractor.getXSize(plane);
-        if (length > 0) {
-            float randomValue = Random.Range(0f, length);
+    // public void PositionNightmare() {
+    //     float length = PlaneSizeExtractor.getXSize(plane);
+    //     if (length > 0) {
+    //         float randomValue = Random.Range(0f, length);
 
-            if (randomValue > 0) {
-                this.transform.position = new Vector3(randomValue * 1f, 0.6f, 3.4f);
-            } 
-        } else {
-            Debug.Log("no plane provided");
-        }
-    }
+    //         if (randomValue > 0) {
+    //             this.transform.position = new Vector3(randomValue * 1f, 0.6f, 3.4f);
+    //         } 
+    //     } else {
+    //         Debug.Log("no plane provided");
+    //     }
+    // }
 
 }
