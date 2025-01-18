@@ -17,6 +17,7 @@ public class Ball : Toy
         gridWidth = 1;
         gridHeight = 1;
         timeActive = 5;
+        type = "ball";
     }
 
     void Start() {
