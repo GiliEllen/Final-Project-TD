@@ -10,11 +10,9 @@ public class BallTrajectory : MonoBehaviour
             return Vector3.zero;
         }
 
-        float directionX = ballTransform.position.x < center.transform.position.x ? 1f : -1f;
+        Vector3 directionToCenter = center.transform.position - ballTransform.position;
 
-        float directionZ = 1f;
-
-        Vector3 trajectory = new Vector3(directionX, 0f, directionZ).normalized;
+        Vector3 trajectory = directionToCenter.normalized;
 
         return trajectory;
     }

@@ -67,9 +67,6 @@ public class PlacementSystem : MonoBehaviour
         Vector3 mousePosition = inputManager.GetSelectedMapPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
 
-        // Debug.Log($"Dragging. Mouse Position: {mousePosition}, Grid Position: {gridPosition}");
-
-        // mouseIndicator.transform.position = mousePosition;
         cellIndicator.transform.position = grid.CellToWorld(gridPosition);
     }
 

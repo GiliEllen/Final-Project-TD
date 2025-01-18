@@ -14,11 +14,10 @@ public class Toy : MonoBehaviour
     public float gridWidth;
     public float gridHeight;
     public bool isAlive = true;
+    public float timeActive;
+    public float elapsedTime = 0f; 
 
 
-    public void Shoot() {
-        //TODO: create shooting logic per toy logic
-    }
 
     public void TakeDamage(float howMuch) {
         hp -= howMuch;
@@ -41,6 +40,12 @@ public class Toy : MonoBehaviour
 
         if (addedShotAmount > 0) {
             shotAmount += addedShotAmount;
+        }
+    }
+
+    public void ActivatedTimeIsUp() {
+        if (elapsedTime >= timeActive) {
+            DestroyToy();
         }
     }
 }
