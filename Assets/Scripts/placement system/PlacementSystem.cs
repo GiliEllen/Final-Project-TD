@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlacementSystem : MonoBehaviour
 {
     [SerializeField]
-    private GameObject cellIndicator;
+    private GameObject mouseIndicator;
 
     [SerializeField]
     private InputManager inputManager;
@@ -18,6 +18,8 @@ public class PlacementSystem : MonoBehaviour
 
     [SerializeField]
     private GameObject gridVisualization;
+    [SerializeField]
+    private PreviewSystem preview;
 
     private void Start()
     {
@@ -25,7 +27,7 @@ public class PlacementSystem : MonoBehaviour
 
         inputManager.OnDrag += UpdatePlacementIndicators;
         inputManager.OnDrop += PlaceStructure;
-         Debug.Log("Subscribed to OnDrag and OnDrop events.");
+        Debug.Log("Subscribed to OnDrag and OnDrop events.");
     }
 
    public void StartPlacementFromButton(int ID)
@@ -35,7 +37,8 @@ public class PlacementSystem : MonoBehaviour
     {
         Debug.Log($"Placement mode started for object ID: {ID}");
         gridVisualization.SetActive(true);
-        cellIndicator.SetActive(true);
+        // cellIndicator.SetActive(true);
+        preview.StartShowingPlacementPreview(database.objectsData[selectedObjectIndex].Prefab, database.objectsData[selectedObjectIndex].Size);
     }
     else
     {
@@ -57,7 +60,8 @@ public class PlacementSystem : MonoBehaviour
     {
         selectedObjectIndex = -1;
         gridVisualization.SetActive(false);
-        cellIndicator.SetActive(false);
+        // cellIndicator.SetActive(false);
+        preview.StopShowingPreview();
     }
 
     private void UpdatePlacementIndicators()
@@ -67,7 +71,10 @@ public class PlacementSystem : MonoBehaviour
         Vector3 mousePosition = inputManager.GetSelectedMapPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
 
-        cellIndicator.transform.position = grid.CellToWorld(gridPosition);
+        // Debug.Log($"Dragging. Mouse Position: {mousePosition}, Grid Position: {gridPosition}");
+
+        mouseIndicator.transform.position = mousePosition;
+        // cellIndicator.transform.position = grid.CellToWorld(gridPosition);
     }
 
     private void PlaceStructure()
@@ -83,5 +90,19 @@ public class PlacementSystem : MonoBehaviour
         newObject.transform.position = grid.CellToWorld(gridPosition);
 
         StopPlacement();
+    }
+
+    private void Update() {
+        if (selectedObjectIndex < 0) {
+            return;
+        }
+        Vector3 mousePosition = inputManager.GetSelectedMapPosition();
+        Vector3Int gridPosition = grid.WorldToCell(mousePosition);
+
+        // TODO: may check for placement validity?
+        bool placementValidity = true;
+
+        mouseIndicator.transform.position = mousePosition;
+        preview.UpdatePosition(grid.CellToWorld(gridPosition));
     }
 }
