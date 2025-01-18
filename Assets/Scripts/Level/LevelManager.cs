@@ -10,15 +10,21 @@ public class LevelManager : MonoBehaviour
     private float elapsedTime = 0f; 
     private int currentIndex = 0;
     private int defeatedNightmareCount = 0;
+    public Baby baby;
 
-    public void isGameOver() {}
+    public void isGameOver() {
+        //TODO: popup logic
+         Debug.Log ("game OVER!!!!!!!");
+    }
     public void isGameWin() {
+        //TODO: popup logic
         Debug.Log ("game WIN!!!!!!!");
     }
 
     private void Start()
     {
         nightmares.Sort((a, b) => a.timeToInitialize.CompareTo(b.timeToInitialize));
+        InvokeRepeating("UpdateScareLevel", 0f, 1f);
     }
 
     public int GetNightmareCount()
@@ -31,6 +37,7 @@ public class LevelManager : MonoBehaviour
         if (currentIndex < nightmares.Count && elapsedTime >= nightmares[currentIndex].timeToInitialize)
         {
             nightmares[currentIndex].gameObject.SetActive(true);
+            baby.AdjustScare(5);
             currentIndex++;
         }
     }
@@ -53,5 +60,16 @@ public class LevelManager : MonoBehaviour
         }
 
         isGameWin();
+    }
+    private void UpdateScareLevel()
+    {
+        foreach (var nightmare in nightmares)
+        {
+            if (nightmare.hp > 0)
+            {
+            baby.AdjustScare(1);
+            }
+        }
+
     }
 }
