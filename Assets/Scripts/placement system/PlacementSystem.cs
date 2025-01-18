@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlacementSystem : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject mouseIndicator;
+    // [SerializeField]
+    // private GameObject mouseIndicator;
 
     [SerializeField]
     private InputManager inputManager;
@@ -73,8 +73,9 @@ public class PlacementSystem : MonoBehaviour
 
         // Debug.Log($"Dragging. Mouse Position: {mousePosition}, Grid Position: {gridPosition}");
 
-        mouseIndicator.transform.position = mousePosition;
+        // mouseIndicator.transform.position = mousePosition;
         // cellIndicator.transform.position = grid.CellToWorld(gridPosition);
+        preview.UpdatePosition(grid.CellToWorld(gridPosition));
     }
 
     private void PlaceStructure()
@@ -102,7 +103,9 @@ public class PlacementSystem : MonoBehaviour
         // TODO: may check for placement validity?
         bool placementValidity = true;
 
-        mouseIndicator.transform.position = mousePosition;
+        // mouseIndicator.transform.position = mousePosition;
         preview.UpdatePosition(grid.CellToWorld(gridPosition));
+        Vector3 worldPosition = grid.CellToWorld(gridPosition);
+Debug.Log($"Grid Position: {gridPosition}, World Position: {worldPosition}");
     }
 }
