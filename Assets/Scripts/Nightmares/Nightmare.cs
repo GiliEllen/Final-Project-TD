@@ -12,6 +12,8 @@ public class Nightmare : MonoBehaviour
     public float speed = 1;
     public GameObject plane;
     public float timeToInitialize;
+    public BabyWall babyWall;
+    public bool touchedWall = false;
 
     private void Update()
     {
@@ -30,9 +32,11 @@ public class Nightmare : MonoBehaviour
         isAlive = false;
         //TODO: add logic - remove from active playerToys
         gameObject.SetActive(false);
+        babyWall.AdjustNightMareCount(-1);
     }
 
-    public virtual void Move() {
+    public virtual void Move() 
+    {
         if (isMoving)
         {
             transform.Translate(Vector3.back * speed * Time.deltaTime);
