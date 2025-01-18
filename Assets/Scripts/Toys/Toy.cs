@@ -16,6 +16,7 @@ public class Toy : MonoBehaviour
     public bool isAlive = true;
     public float timeActive;
     public float elapsedTime = 0f; 
+    public string type;
 
 
 
