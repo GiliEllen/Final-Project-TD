@@ -17,6 +17,7 @@ public class Rocket : Toy
         gridWidth = 1;
         gridHeight = 1;
         timeActive = 5;
+        type = "rocket";
     }
 
     private void OnCollisionEnter(Collision collision)
