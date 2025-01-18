@@ -5,14 +5,19 @@ using UnityEngine;
 public class Nightmare : MonoBehaviour
 {
     public float hp;
-    public bool isMoving;
+    public bool isMoving = true;
     public float gridWidth;
     public float gridHeight;
     public bool isAlive = true;
+    public float speed = 1;
     public GameObject plane;
+    public float timeToInitialize;
+    public BabyWall babyWall;
+    public bool touchedWall = false;
 
-    void Start() {
-        // PositionNightmare();
+    private void Update()
+    {
+        Move();
     }
 
     
@@ -27,23 +32,15 @@ public class Nightmare : MonoBehaviour
         isAlive = false;
         //TODO: add logic - remove from active playerToys
         gameObject.SetActive(false);
+        babyWall.AdjustNightMareCount(-1);
     }
 
-    public void Move() {
-
+    public virtual void Move() 
+    {
+        if (isMoving)
+        {
+            transform.Translate(Vector3.back * speed * Time.deltaTime);
+        }
     }
-
-    // public void PositionNightmare() {
-    //     float length = PlaneSizeExtractor.getXSize(plane);
-    //     if (length > 0) {
-    //         float randomValue = Random.Range(0f, length);
-
-    //         if (randomValue > 0) {
-    //             this.transform.position = new Vector3(randomValue * 1f, 0.6f, 3.4f);
-    //         } 
-    //     } else {
-    //         Debug.Log("no plane provided");
-    //     }
-    // }
 
 }

@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class BallTrajectory : MonoBehaviour
 {
-    public GameObject center; 
-
     public static Vector3 CalculateTrajectory(GameObject center, Transform ballTransform)
     {
         if (center == null)
@@ -12,9 +10,10 @@ public class BallTrajectory : MonoBehaviour
             return Vector3.zero;
         }
 
-        float directionX = ballTransform.position.x < center.transform.position.x ? 1f : -1f;
+        Vector3 directionToCenter = center.transform.position - ballTransform.position;
 
-        Vector3 trajectory = new Vector3(directionX, 0f, 1f).normalized;
+        Vector3 trajectory = directionToCenter.normalized;
+
         return trajectory;
     }
 }
