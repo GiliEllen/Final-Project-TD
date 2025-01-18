@@ -8,7 +8,9 @@ public class Zombie : Nightmare
     {
         hp = 1;
         isMoving = false;
-        gridWidth = 2;
-        gridHeight = 2;
+        gridWidth = 1;
+        gridHeight = 1;
+        speed = 1;
     }
+
 }

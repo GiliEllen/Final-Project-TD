@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlacementSystem : MonoBehaviour
 {
     [SerializeField]
-    private GameObject mouseIndicator, cellIndicator;
+    private GameObject cellIndicator;
 
     [SerializeField]
     private InputManager inputManager;
@@ -23,7 +23,6 @@ public class PlacementSystem : MonoBehaviour
     {
         StopPlacement();
 
-        // Subscribe to InputManager events
         inputManager.OnDrag += UpdatePlacementIndicators;
         inputManager.OnDrop += PlaceStructure;
          Debug.Log("Subscribed to OnDrag and OnDrop events.");
@@ -31,7 +30,6 @@ public class PlacementSystem : MonoBehaviour
 
    public void StartPlacementFromButton(int ID)
 {
-    Debug.Log("click");
     StartPlacement(ID);
     if (selectedObjectIndex >= 0)
     {
@@ -69,9 +67,6 @@ public class PlacementSystem : MonoBehaviour
         Vector3 mousePosition = inputManager.GetSelectedMapPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
 
-        // Debug.Log($"Dragging. Mouse Position: {mousePosition}, Grid Position: {gridPosition}");
-
-        mouseIndicator.transform.position = mousePosition;
         cellIndicator.transform.position = grid.CellToWorld(gridPosition);
     }
 
