@@ -23,7 +23,7 @@ public class Nightmare : MonoBehaviour
     
     public void TakeDamage(float howMuch) {
         hp -= howMuch;
-        if (hp >= 0 ) {
+        if (hp <= 0 ) {
             DestroyNightmare();
         }
     }
