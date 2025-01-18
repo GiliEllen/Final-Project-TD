@@ -26,6 +26,13 @@ public class PreviewSystem : MonoBehaviour
     }
 
     private void PreparePreview(GameObject previewObject) {
+
+        ProcessObject(previewObject);
+
+    // Recursively process all children
+    foreach (Transform child in previewObject.transform) {
+        ProcessObject(child.gameObject);
+    }
         Renderer[] renderers = previewObject.GetComponentsInChildren<Renderer>();
         foreach(Renderer renderer in renderers)
         {
@@ -37,6 +44,22 @@ public class PreviewSystem : MonoBehaviour
 
             renderer.materials = materials;
         }
+    }
+
+    private void ProcessObject(GameObject obj) {
+    // Disable Rigidbody if it exists
+    Rigidbody rb = obj.GetComponent<Rigidbody>();
+    if (rb != null) {
+        rb.isKinematic = true; // Disable physics interactions
+        rb.detectCollisions = false; // Prevent collision detection
+        rb.useGravity = false; // Disable gravity
+    }
+
+    // Disable all Colliders
+    Collider[] colliders = obj.GetComponents<Collider>();
+    foreach (Collider collider in colliders) {
+        collider.enabled = false;
+    }
     }
     private void PrepareCursor(Vector2Int size) {
         if (size.x > 0 && size.y > 0) {

@@ -7,15 +7,15 @@ public class Ball : Toy
 
     public Ball()
     {
-        hp = 5;
+        hp = 2;
         isMovable = true;
         isMoving = false;
         canBulletBounce = true;
         shotDegree = 0;
         shotAmount = 0;
         manaCost = 3;
-        gridWidth = 2;
-        gridHeight = 2;
+        gridWidth = 1;
+        gridHeight = 1;
         timeActive = 5;
     }
 
@@ -42,9 +42,8 @@ public class Ball : Toy
         Nightmare enemy = collision.gameObject.GetComponent<Nightmare>();
         if (enemy != null)
         {
-            enemy.TakeDamage(1);
-
-            TakeDamage(hp);
+            enemy.TakeDamage(3);
+            TakeDamage(1);
         } 
     }
 

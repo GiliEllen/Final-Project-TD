@@ -17,3 +17,7 @@ MonoBehaviour:
     <ID>k__BackingField: 0
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 1659342489672612934, guid: 838fc8dafff50884ab412e056e9294af, type: 3}
+  - <Name>k__BackingField: Rocket
+    <ID>k__BackingField: 1
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 3260463032358926754, guid: 6d328e82259d99a4f8d47da1ed2e6cc8, type: 3}
