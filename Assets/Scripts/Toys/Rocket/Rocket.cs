@@ -27,7 +27,9 @@ public class Rocket : Toy
         {
             enemy.TakeDamage(20);
             TakeDamage(hp);
-        } 
+        }  
+        Transform root = transform.root; 
+        root.gameObject.SetActive(false);
     }
 
 }
