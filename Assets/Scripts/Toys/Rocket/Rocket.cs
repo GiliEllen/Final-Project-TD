@@ -58,7 +58,14 @@ public class Rocket : Toy
         transform.position = path[0];
         transform.DOPath(path, duration, PathType.CatmullRom)
             .SetEase(Ease.InOutSine)
-            .SetLookAt(0.01f);
+            .SetLookAt(0.01f)
+            .OnComplete(() => OnRocketReachedTarget());
+    }
+
+    private void OnRocketReachedTarget()
+    {
+        //here explosion animation
+        Debug.Log("Rocket reached target");
     }
 
 }
