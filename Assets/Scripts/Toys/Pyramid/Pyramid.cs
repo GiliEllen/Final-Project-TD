@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Pyramid : Toy
 {
-    public GameObject hoopPrefab; // Prefab for the hoop
+    public GameObject hoopPrefab; 
 
-    private float shootTimer; // Timer to handle the interval between shots
-    private float activeTimer; // Timer to track how long the pyramid is active
-    private bool isShooting; // Flag to indicate whether the pyramid is shooting
+    private float shootTimer;
+    private float activeTimer;
+    private bool isShooting; 
 
     public Pyramid()
     {
@@ -31,15 +31,13 @@ public class Pyramid : Toy
     {
         if (isShooting)
         {
-            // Handle shooting logic
             shootTimer += Time.deltaTime;
-            if (shootTimer >= 1f / shotAmount) // Fire at the specified rate
+            if (shootTimer >= 1f / shotAmount) 
             {
                 shootTimer = 0f;
                 FireHoop();
             }
 
-            // Handle deactivation logic
             activeTimer += Time.deltaTime;
             if (activeTimer >= timeActive)
             {
@@ -50,7 +48,6 @@ public class Pyramid : Toy
 
     public void StartShotting()
     {
-        // Start the shooting process
         isShooting = true;
         shootTimer = 0f;
         activeTimer = 0f;
@@ -58,10 +55,8 @@ public class Pyramid : Toy
 
     private void FireHoop()
     {
-        // Calculate the fire point dynamically
         Vector3 firePoint = transform.position + new Vector3(0, 0, 2);
 
-        // Instantiate a hoop at the fire point
         if (hoopPrefab != null)
         {
             Instantiate(hoopPrefab, firePoint, Quaternion.identity);
@@ -74,7 +69,6 @@ public class Pyramid : Toy
 
     private void Deactivate()
     {
-        // Stop shooting and deactivate the pyramid
         isShooting = false;
         gameObject.SetActive(false);
     }
