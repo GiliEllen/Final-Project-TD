@@ -43,8 +43,10 @@ public class Ball : Toy
         Nightmare enemy = collision.gameObject.GetComponent<Nightmare>();
         if (enemy != null)
         {
-            enemy.TakeDamage(3);
-            TakeDamage(1);
+            if (!enemy.isInvisible) {    
+                enemy.TakeDamage(3);
+                TakeDamage(1);
+            }
         } 
     }
 

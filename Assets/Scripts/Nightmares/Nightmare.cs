@@ -18,6 +18,7 @@ public class Nightmare : MonoBehaviour
     public float scareLevelPassive;
     public float scareLevelReachWall;
     public float scareLevelDisappear;
+    public bool isInvisible;
 
     private void Update()
     {
