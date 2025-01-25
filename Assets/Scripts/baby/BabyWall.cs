@@ -19,6 +19,7 @@ public class BabyWall : MonoBehaviour
             AdjustNightMareCount(1);
             baby.AdjustScare(enemy.scareLevelReachWall);
             enemy.touchedWall = true;
+            enemy.isMoving = false;
         } 
     }
 

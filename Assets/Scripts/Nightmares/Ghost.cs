@@ -41,6 +41,9 @@ public class Ghost : Nightmare
         isInvisible = false;
         ghostRenderer.material = materialVisible;
         ghostRigidbody.isKinematic = false;
+        Vector3 currentPosition = transform.position;
+        float randomX = Random.Range(-4, 7);  
+        transform.position = new Vector3(Mathf.Round(randomX), currentPosition.y, currentPosition.z);
     }
 
       private void Update()
