@@ -27,11 +27,6 @@ public class LevelManager : MonoBehaviour
         InvokeRepeating("UpdateScareLevel", 0f, 1f);
     }
 
-    public int GetNightmareCount()
-    {
-        return nightmares.Count;
-    }
-
     public void SendNightMare() 
     {
         if (currentIndex < nightmares.Count && elapsedTime >= nightmares[currentIndex].timeToInitialize)
@@ -67,7 +62,7 @@ public class LevelManager : MonoBehaviour
         {
             if (nightmare.hp > 0)
             {
-            baby.AdjustScare(1);
+                baby.AdjustScare(1);
             }
         }
 

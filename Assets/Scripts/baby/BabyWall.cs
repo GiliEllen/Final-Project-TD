@@ -17,6 +17,7 @@ public class BabyWall : MonoBehaviour
         if (enemy != null && enemy.touchedWall == false)
         {
             AdjustNightMareCount(1);
+            baby.AdjustScare(enemy.scareLevelReachWall);
             enemy.touchedWall = true;
         } 
     }
@@ -25,11 +26,15 @@ public class BabyWall : MonoBehaviour
         nightmareCount += amount;
     }
 
-    public void UpdateScareLevel() {
-        if (nightmareCount <= 0) {
-            nightmareCount = 0;
-            return;
-        }
-        baby.AdjustScare(nightmareCount * 3);
+    // public void UpdateScareLevel() {
+    //     if (nightmareCount <= 0) {
+    //         nightmareCount = 0;
+    //         return;
+    //     }
+    //     baby.AdjustScare(nightmareCount * 3);
+    // }
+
+    public void UpdateScareLevel(float amount) {
+        baby.AdjustScare(amount);
     }
 }

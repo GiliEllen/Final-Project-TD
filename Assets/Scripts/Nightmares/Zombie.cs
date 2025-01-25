@@ -11,6 +11,10 @@ public class Zombie : Nightmare
         gridWidth = 1;
         gridHeight = 1;
         speed = 1f;
+        scareLevelAppear = 5;
+        scareLevelPassive = 7;
+        scareLevelReachWall = 40;
+        scareLevelDisappear = -10;
     }
 
 }
