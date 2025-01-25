@@ -15,5 +15,6 @@ public class Skeleton : Nightmare
         scareLevelPassive = 7;
         scareLevelReachWall = 40;
         scareLevelDisappear = -10;
+        isInvisible= false;
     }
 }

@@ -15,5 +15,6 @@ public class SuperZombie : Nightmare
         scareLevelPassive = 10;
         scareLevelReachWall = 60;
         scareLevelDisappear = -15;
+        isInvisible= false;
     }
 }

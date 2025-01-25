@@ -35,8 +35,10 @@ public class Rocket : Toy
         Nightmare enemy = collision.gameObject.GetComponent<Nightmare>();
         if (enemy != null)
         {
-            enemy.TakeDamage(20);
-            TakeDamage(hp);
+            if (!enemy.isInvisible) {    
+                enemy.TakeDamage(20);
+                TakeDamage(hp);
+            }
         }  
         Transform root = transform.root; 
         root.gameObject.SetActive(false);
