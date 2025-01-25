@@ -14,6 +14,11 @@ public class Nightmare : MonoBehaviour
     public float timeToInitialize;
     public BabyWall babyWall;
     public bool touchedWall = false;
+    public float scareLevelAppear;
+    public float scareLevelPassive;
+    public float scareLevelReachWall;
+    public float scareLevelDisappear;
+    public bool isInvisible;
 
     private void Update()
     {
@@ -33,6 +38,7 @@ public class Nightmare : MonoBehaviour
         //TODO: add logic - remove from active playerToys
         gameObject.SetActive(false);
         babyWall.AdjustNightMareCount(-1);
+        babyWall.UpdateScareLevel(scareLevelDisappear);
     }
 
     public virtual void Move() 
