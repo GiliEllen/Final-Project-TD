@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlacementSystem : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class PlacementSystem : MonoBehaviour
     private GameObject gridVisualization;
     [SerializeField]
     private PreviewSystem preview;
+    public List<PlacementButton> placementButtons;
 
     private void Start()
     {
@@ -27,7 +29,7 @@ public class PlacementSystem : MonoBehaviour
 
         inputManager.OnDrag += UpdatePlacementIndicators;
         inputManager.OnDrop += PlaceStructure;
-        Debug.Log("Subscribed to OnDrag and OnDrop events.");
+        // Debug.Log("Subscribed to OnDrag and OnDrop events.");
     }
 
    public void StartPlacementFromButton(int ID)
@@ -35,7 +37,7 @@ public class PlacementSystem : MonoBehaviour
     StartPlacement(ID);
     if (selectedObjectIndex >= 0)
     {
-        Debug.Log($"Placement mode started for object ID: {ID}");
+        // Debug.Log($"Placement mode started for object ID: {ID}");
         gridVisualization.SetActive(true);
         // cellIndicator.SetActive(true);
         preview.StartShowingPlacementPreview(database.objectsData[selectedObjectIndex].Prefab, database.objectsData[selectedObjectIndex].Size);
@@ -85,10 +87,15 @@ public class PlacementSystem : MonoBehaviour
         Vector3 mousePosition = inputManager.GetSelectedMapPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
 
-        Debug.Log($"Placing object at Grid Position: {gridPosition}");
+        // Debug.Log($"Placing object at Grid Position: {gridPosition}");
 
         GameObject newObject = Instantiate(database.objectsData[selectedObjectIndex].Prefab);
         newObject.transform.position = grid.CellToWorld(gridPosition);
+
+        PlacementButton buttonAtIndex = placementButtons[selectedObjectIndex];
+        Debug.Log(placementButtons[selectedObjectIndex]);
+        Debug.Log(selectedObjectIndex);
+        buttonAtIndex.StartCooldown();
 
         StopPlacement();
     }
@@ -106,6 +113,6 @@ public class PlacementSystem : MonoBehaviour
         // mouseIndicator.transform.position = mousePosition;
         preview.UpdatePosition(grid.CellToWorld(gridPosition));
         Vector3 worldPosition = grid.CellToWorld(gridPosition);
-Debug.Log($"Grid Position: {gridPosition}, World Position: {worldPosition}");
+// Debug.Log($"Grid Position: {gridPosition}, World Position: {worldPosition}");
     }
 }

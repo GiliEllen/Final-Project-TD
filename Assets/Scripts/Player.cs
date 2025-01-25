@@ -25,8 +25,8 @@ public class Player : MonoBehaviour
     //TODO: add Toy class
     public void PlaceToy(string toy, Vector3 position) {
         //TODO: place toy logic
-        Debug.Log(position);
-        Debug.Log(toy);
+        // Debug.Log(position);
+        // Debug.Log(toy);
     }
 
     public void SetPlayerCubes()
@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
             return;
         }
         playerCubes = totalCubes / 2;
-        Debug.Log($"Total Cubes: {totalCubes}, Player Cubes: {playerCubes}");
+        // Debug.Log($"Total Cubes: {totalCubes}, Player Cubes: {playerCubes}");
     }
 
     // public bool IsGameOver()
