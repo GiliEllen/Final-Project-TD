@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour
     private Camera sceneCamera;
 
     private Vector3 lastPosition = Vector3.zero;
+
     [SerializeField]
     private LayerMask placementLayermask;
 
@@ -26,13 +27,13 @@ public class InputManager : MonoBehaviour
 
     private void HandleMouseInput()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0)) // Left mouse button is held
         {
             isTouching = true;
             OnDrag?.Invoke();
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0)) // Left mouse button is released
         {
             if (isTouching)
             {
@@ -47,15 +48,21 @@ public class InputManager : MonoBehaviour
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-
             switch (touch.phase)
             {
+                case TouchPhase.Began:
                 case TouchPhase.Moved:
+                    isTouching = true;
                     OnDrag?.Invoke();
                     break;
 
                 case TouchPhase.Ended:
-                    OnDrop?.Invoke();
+                case TouchPhase.Canceled:
+                    if (isTouching)
+                    {
+                        OnDrop?.Invoke();
+                    }
+                    isTouching = false;
                     break;
             }
         }
@@ -63,13 +70,22 @@ public class InputManager : MonoBehaviour
 
     public Vector3 GetSelectedMapPosition()
     {
+#if UNITY_EDITOR
+        // Mouse position in the editor
         Vector3 mousePos = Input.mousePosition;
+#else
+        // Touch position for mobile
+        Vector3 mousePos = Input.touchCount > 0 ? Input.GetTouch(0).position : Vector3.zero;
+#endif
+
         mousePos.z = sceneCamera.nearClipPlane;
+
         Ray ray = sceneCamera.ScreenPointToRay(mousePos);
-        if (Physics.Raycast(ray, out RaycastHit hit, 100, placementLayermask))
+        if (Physics.Raycast(ray, out RaycastHit hit, 100f, placementLayermask))
         {
             lastPosition = hit.point;
         }
+
         return lastPosition;
     }
 }
