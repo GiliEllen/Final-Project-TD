@@ -12,6 +12,9 @@ public class Ghost : Nightmare
     private Material materialInvisible;
     private Renderer ghostRenderer;
      private Rigidbody ghostRigidbody;
+
+     public float timeUntilDisappear = 3f;
+     public float timeUntilReappear = 2f;
     public Ghost()
     {
         hp = 15;
@@ -36,32 +39,37 @@ public class Ghost : Nightmare
         isInvisible = true;
         ghostRenderer.material = materialInvisible; 
         ghostRigidbody.isKinematic = true;
+        isMoving = false;
     }
     public void GhostReappear() {
         isInvisible = false;
         ghostRenderer.material = materialVisible;
         ghostRigidbody.isKinematic = false;
         Vector3 currentPosition = transform.position;
-        float randomX = Random.Range(-4, 7);  
-        transform.position = new Vector3(Mathf.Round(randomX), currentPosition.y, currentPosition.z);
+        float randomX = Random.Range(-4, 6);  
+        transform.position = new Vector3(Mathf.Round(randomX) +0.5f, currentPosition.y, currentPosition.z);
+        isMoving = true;
     }
 
       private void Update()
     {
         timer += Time.deltaTime;
 
-        if (timer >= 2f)
+        if (timer >= timeUntilReappear)
         {
             if (isInvisible)
             {
                 GhostReappear();
+                timer = 0f;
             }
-            else
+        }
+
+        if (timer >= timeUntilDisappear) {
+             if (!isInvisible)
             {
                 GhostDisappear();
+                timer = 0f;
             }
-
-            timer = 0f;
         }
           Move();
     }
