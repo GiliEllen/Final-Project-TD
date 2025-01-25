@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3619201937066516998
+--- !u!1 &7475824803513242483
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8837151569046843139}
-  - component: {fileID: 2229688124021039363}
-  - component: {fileID: 8403103821760385344}
-  - component: {fileID: 1704900157158213671}
-  - component: {fileID: 7996337089404450297}
-  - component: {fileID: 4134437306354086568}
+  - component: {fileID: 6505873011123156402}
+  - component: {fileID: 3013175403999494354}
+  - component: {fileID: 6269600231018332422}
+  - component: {fileID: 1434464464187849835}
+  - component: {fileID: 4166427862458007581}
+  - component: {fileID: 2759868569431113809}
   m_Layer: 0
-  m_Name: Zombie
+  m_Name: Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8837151569046843139
+  m_IsActive: 0
+--- !u!4 &6505873011123156402
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3619201937066516998}
+  m_GameObject: {fileID: 7475824803513242483}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.7769282, y: 4.2654057, z: 4.69}
+  m_LocalPosition: {x: -1.45, y: 4.4354057, z: 6.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2229688124021039363
+--- !u!33 &3013175403999494354
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3619201937066516998}
+  m_GameObject: {fileID: 7475824803513242483}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &8403103821760385344
+--- !u!23 &6269600231018332422
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3619201937066516998}
+  m_GameObject: {fileID: 7475824803513242483}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 77fa926195b5dd244a6c511613eeacbb, type: 2}
+  - {fileID: 2100000, guid: cfc4627a2aa7ee547b7b7b0c7cd7cfaa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,13 +86,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1704900157158213671
+--- !u!65 &1434464464187849835
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3619201937066516998}
+  m_GameObject: {fileID: 7475824803513242483}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -107,41 +107,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7996337089404450297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3619201937066516998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2de218120fbc6a49a70374e4a5fb10b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 10
-  isMoving: 1
-  gridWidth: 1
-  gridHeight: 1
-  isAlive: 1
-  speed: 2
-  plane: {fileID: 0}
-  timeToInitialize: 0
-  babyWall: {fileID: 0}
-  touchedWall: 0
-  scareLevelAppear: 5
-  scareLevelPassive: 7
-  scareLevelReachWall: 40
-  scareLevelDisappear: -10
---- !u!54 &4134437306354086568
+--- !u!54 &4166427862458007581
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3619201937066516998}
+  m_GameObject: {fileID: 7475824803513242483}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -156,7 +130,36 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 114
   m_CollisionDetection: 0
+--- !u!114 &2759868569431113809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7475824803513242483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba052f8712e82448aaf43b174305a05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 15
+  isMoving: 1
+  gridWidth: 1
+  gridHeight: 1
+  isAlive: 1
+  speed: 0.8
+  plane: {fileID: 0}
+  timeToInitialize: 0
+  babyWall: {fileID: 0}
+  touchedWall: 0
+  scareLevelAppear: 10
+  scareLevelPassive: 0
+  scareLevelReachWall: 60
+  scareLevelDisappear: -15
+  isInvisible: 0
+  materialVisible: {fileID: 2100000, guid: cfc4627a2aa7ee547b7b7b0c7cd7cfaa, type: 2}
+  materialInvisible: {fileID: 2100000, guid: 23fe87588197109449d5f0ab7939ae5e, type: 2}

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3619201937066516998
+--- !u!1 &4410785925096810768
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8837151569046843139}
-  - component: {fileID: 2229688124021039363}
-  - component: {fileID: 8403103821760385344}
-  - component: {fileID: 1704900157158213671}
-  - component: {fileID: 7996337089404450297}
-  - component: {fileID: 4134437306354086568}
+  - component: {fileID: 7386487975556433945}
+  - component: {fileID: 4545910249119942418}
+  - component: {fileID: 4464028991734223248}
+  - component: {fileID: 7083204725947347175}
+  - component: {fileID: 6878627946951839811}
+  - component: {fileID: 6782666973110517254}
   m_Layer: 0
-  m_Name: Zombie
+  m_Name: superZombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8837151569046843139
+  m_IsActive: 0
+--- !u!4 &7386487975556433945
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3619201937066516998}
+  m_GameObject: {fileID: 4410785925096810768}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.7769282, y: 4.2654057, z: 4.69}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.9780717, y: 0.593, z: 14.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2229688124021039363
+--- !u!33 &4545910249119942418
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3619201937066516998}
+  m_GameObject: {fileID: 4410785925096810768}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &8403103821760385344
+--- !u!23 &4464028991734223248
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3619201937066516998}
+  m_GameObject: {fileID: 4410785925096810768}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 77fa926195b5dd244a6c511613eeacbb, type: 2}
+  - {fileID: 2100000, guid: 331ca2066c7a4b446bc094b74291d458, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,13 +86,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1704900157158213671
+--- !u!65 &7083204725947347175
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3619201937066516998}
+  m_GameObject: {fileID: 4410785925096810768}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -107,39 +107,39 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7996337089404450297
+--- !u!114 &6878627946951839811
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3619201937066516998}
+  m_GameObject: {fileID: 4410785925096810768}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2de218120fbc6a49a70374e4a5fb10b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4dcc60c4110e6c049b9b5047688680a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  hp: 20
   isMoving: 1
   gridWidth: 1
   gridHeight: 1
   isAlive: 1
-  speed: 2
+  speed: 1.8
   plane: {fileID: 0}
   timeToInitialize: 0
   babyWall: {fileID: 0}
   touchedWall: 0
-  scareLevelAppear: 5
-  scareLevelPassive: 7
-  scareLevelReachWall: 40
-  scareLevelDisappear: -10
---- !u!54 &4134437306354086568
+  scareLevelAppear: 10
+  scareLevelPassive: 10
+  scareLevelReachWall: 60
+  scareLevelDisappear: -15
+--- !u!54 &6782666973110517254
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3619201937066516998}
+  m_GameObject: {fileID: 4410785925096810768}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -156,7 +156,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 114
+  m_Constraints: 0
   m_CollisionDetection: 0
