@@ -10,7 +10,7 @@ public class Zombie : Nightmare
         isMoving = false;
         gridWidth = 1;
         gridHeight = 1;
-        speed = 1;
+        speed = 1f;
     }
 
 }
