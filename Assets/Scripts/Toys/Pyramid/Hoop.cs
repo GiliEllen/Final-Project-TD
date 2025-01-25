@@ -25,8 +25,12 @@ public class Hoop : MonoBehaviour
         Nightmare enemy = collision.gameObject.GetComponent<Nightmare>();
         if (enemy != null)
         {
-            enemy.TakeDamage(5);
-            DeactivateHoop();
+            if (!enemy.isInvisible) {     
+                enemy.TakeDamage(5);
+                DeactivateHoop();
+            } else {
+                return;
+            }
         } 
     }
     private void DeactivateHoop()
