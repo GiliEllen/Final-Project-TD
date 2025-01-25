@@ -3,9 +3,6 @@ using System.Collections.Generic;
 
 public class PlacementSystem : MonoBehaviour
 {
-    // [SerializeField]
-    // private GameObject mouseIndicator;
-
     [SerializeField]
     private InputManager inputManager;
 
@@ -23,30 +20,31 @@ public class PlacementSystem : MonoBehaviour
     private PreviewSystem preview;
     public List<PlacementButton> placementButtons;
 
+    private MeshCollider gridMeshCollider;
+
     private void Start()
     {
+        // Find the MeshCollider attached to the grid visualization object
+        gridMeshCollider = gridVisualization.GetComponent<MeshCollider>();
+        
         StopPlacement();
-
         inputManager.OnDrag += UpdatePlacementIndicators;
         inputManager.OnDrop += PlaceStructure;
-        // Debug.Log("Subscribed to OnDrag and OnDrop events.");
     }
 
-   public void StartPlacementFromButton(int ID)
-{
-    StartPlacement(ID);
-    if (selectedObjectIndex >= 0)
+    public void StartPlacementFromButton(int ID)
     {
-        // Debug.Log($"Placement mode started for object ID: {ID}");
-        gridVisualization.SetActive(true);
-        // cellIndicator.SetActive(true);
-        preview.StartShowingPlacementPreview(database.objectsData[selectedObjectIndex].Prefab, database.objectsData[selectedObjectIndex].Size);
+        StartPlacement(ID);
+        if (selectedObjectIndex >= 0)
+        {
+            gridVisualization.SetActive(true);
+            preview.StartShowingPlacementPreview(database.objectsData[selectedObjectIndex].Prefab, database.objectsData[selectedObjectIndex].Size);
+        }
+        else
+        {
+            Debug.LogWarning($"No valid object found for ID: {ID}");
+        }
     }
-    else
-    {
-        Debug.LogWarning($"No valid object found for ID: {ID}");
-    }
-}
 
     private void StartPlacement(int ID)
     {
@@ -62,7 +60,6 @@ public class PlacementSystem : MonoBehaviour
     {
         selectedObjectIndex = -1;
         gridVisualization.SetActive(false);
-        // cellIndicator.SetActive(false);
         preview.StopShowingPreview();
     }
 
@@ -73,11 +70,26 @@ public class PlacementSystem : MonoBehaviour
         Vector3 mousePosition = inputManager.GetSelectedMapPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
 
-        // Debug.Log($"Dragging. Mouse Position: {mousePosition}, Grid Position: {gridPosition}");
+        // Ensure the preview position stays inside the grid bounds
+        Vector3 validPosition = GetValidPositionInsideGrid(gridPosition);
+        preview.UpdatePosition(validPosition);
+    }
 
-        // mouseIndicator.transform.position = mousePosition;
-        // cellIndicator.transform.position = grid.CellToWorld(gridPosition);
-        preview.UpdatePosition(grid.CellToWorld(gridPosition));
+    private Vector3 GetValidPositionInsideGrid(Vector3Int gridPosition)
+    {
+        Vector3 worldPosition = grid.CellToWorld(gridPosition);
+
+        // Check if the position is inside the grid's mesh bounds
+        Vector3 localPosition = gridVisualization.transform.InverseTransformPoint(worldPosition);
+        Vector3 meshMin = gridMeshCollider.bounds.min;
+        Vector3 meshMax = gridMeshCollider.bounds.max;
+
+        // Clamp the position to stay within the grid's bounds
+        localPosition.x = Mathf.Clamp(localPosition.x, meshMin.x, meshMax.x);
+        localPosition.z = Mathf.Clamp(localPosition.z, meshMin.z, meshMax.z);
+
+        // Convert back to world position
+        return gridVisualization.transform.TransformPoint(localPosition);
     }
 
     private void PlaceStructure()
@@ -87,32 +99,16 @@ public class PlacementSystem : MonoBehaviour
         Vector3 mousePosition = inputManager.GetSelectedMapPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
 
-        // Debug.Log($"Placing object at Grid Position: {gridPosition}");
+        // Get a valid position for placing the object inside the grid bounds
+        Vector3 validPosition = GetValidPositionInsideGrid(gridPosition);
 
+        // Instantiate and place the object
         GameObject newObject = Instantiate(database.objectsData[selectedObjectIndex].Prefab);
-        newObject.transform.position = grid.CellToWorld(gridPosition);
+        newObject.transform.position = validPosition;
 
         PlacementButton buttonAtIndex = placementButtons[selectedObjectIndex];
-        Debug.Log(placementButtons[selectedObjectIndex]);
-        Debug.Log(selectedObjectIndex);
         buttonAtIndex.StartCooldown();
 
         StopPlacement();
-    }
-
-    private void Update() {
-        if (selectedObjectIndex < 0) {
-            return;
-        }
-        Vector3 mousePosition = inputManager.GetSelectedMapPosition();
-        Vector3Int gridPosition = grid.WorldToCell(mousePosition);
-
-        // TODO: may check for placement validity?
-        bool placementValidity = true;
-
-        // mouseIndicator.transform.position = mousePosition;
-        preview.UpdatePosition(grid.CellToWorld(gridPosition));
-        Vector3 worldPosition = grid.CellToWorld(gridPosition);
-// Debug.Log($"Grid Position: {gridPosition}, World Position: {worldPosition}");
     }
 }
