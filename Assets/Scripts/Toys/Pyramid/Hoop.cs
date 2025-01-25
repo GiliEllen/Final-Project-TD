@@ -4,12 +4,14 @@ public class Hoop : MonoBehaviour
 {
     public float speed = 10f; 
     public int damage = 5; 
+    public float secondsToInactive = 2f;
 
     private float initialY; 
 
     void Start()
     {
         initialY = transform.position.y;
+        Invoke("DeactivateHoop", secondsToInactive);
     }
 
     void Update()
@@ -24,7 +26,11 @@ public class Hoop : MonoBehaviour
         if (enemy != null)
         {
             enemy.TakeDamage(5);
-            gameObject.SetActive(false);
+            DeactivateHoop();
         } 
+    }
+    private void DeactivateHoop()
+    {
+        gameObject.SetActive(false);
     }
 }
