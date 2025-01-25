@@ -7,15 +7,9 @@ public class Skeleton : Nightmare
     public Skeleton()
     {
         hp = 10;
-        isMoving = false;
+        isMoving = true;
         gridWidth = 1;
         gridHeight = 1;
-        speed = 1;
+        speed = 1f;
     }
-
-    public override void Move() 
-    {
-        return;
-    }
-
 }
