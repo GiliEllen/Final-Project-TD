@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 77fa926195b5dd244a6c511613eeacbb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -129,6 +129,10 @@ MonoBehaviour:
   timeToInitialize: 0
   babyWall: {fileID: 0}
   touchedWall: 0
+  scareLevelAppear: 5
+  scareLevelPassive: 7
+  scareLevelReachWall: 40
+  scareLevelDisappear: -10
 --- !u!54 &4134437306354086568
 Rigidbody:
   m_ObjectHideFlags: 0
