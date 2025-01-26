@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4410785925096810768}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 8141886249983085405, guid: d69b11ac489aa284183c1a7b9804cbec, type: 3}
 --- !u!23 &4464028991734223248
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -133,6 +133,7 @@ MonoBehaviour:
   scareLevelPassive: 10
   scareLevelReachWall: 60
   scareLevelDisappear: -15
+  isInvisible: 0
 --- !u!54 &6782666973110517254
 Rigidbody:
   m_ObjectHideFlags: 0
