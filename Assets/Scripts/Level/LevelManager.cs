@@ -11,14 +11,21 @@ public class LevelManager : MonoBehaviour
     private int currentIndex = 0;
     private int defeatedNightmareCount = 0;
     public Baby baby;
+    public float totalPointsToWin;
+    public GameWinScreen gameWinScreen;
+    public GameLoseScreen gameLoseScreen;
 
     public void isGameOver() {
         //TODO: popup logic
          Debug.Log ("game OVER!!!!!!!");
+         gameLoseScreen.ToggleActiveStatus(true);
+         Time.timeScale = 0;  
     }
     public void isGameWin() {
         //TODO: popup logic
         Debug.Log ("game WIN!!!!!!!");
+        gameWinScreen.ToggleActiveStatus(true);
+        Time.timeScale = 0;  
     }
 
     private void Start()
