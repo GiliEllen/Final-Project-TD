@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        // Load player data
+        LoadFromJSON();
     }
 
     // Methods to update player data
@@ -77,31 +80,31 @@ public class Player : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    public void LoadPlayerData()
+    public void LoadFromJSON()
+{
+    string filePath = Path.Combine(Application.persistentDataPath, "playerData.json");
+
+    if (File.Exists(filePath))
     {
-        Points = PlayerPrefs.GetInt("Points", 0);
-        UnlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
-        LastUnlockedPicture = PlayerPrefs.GetString("LastUnlockedPicture", "");
+        // Load the existing file
+        string json = File.ReadAllText(filePath);
+        PlayerData data = JsonConvert.DeserializeObject<PlayerData>(json);
 
-        foreach (var key in PuzzleProgress.Keys)
-        {
-            string pieces = PlayerPrefs.GetString($"Puzzle_{key}", "");
-            if (!string.IsNullOrEmpty(pieces))
-            {
-                PuzzleProgress[key] = new HashSet<int>(Array.ConvertAll(pieces.Split(','), int.Parse));
-            }
-        }
+        Points = data.Points;
+        UnlockedLevel = data.UnlockedLevel;
+        LastUnlockedPicture = data.LastUnlockedPicture;
+        PuzzleProgress = data.PuzzleProgress;
+
+        Debug.Log("Player data loaded successfully.");
     }
-
-    public void ResetPlayerData()
+    else
     {
-        Points = 0;
-        UnlockedLevel = 1; 
-        LastUnlockedPicture = string.Empty;
-        PuzzleProgress.Clear();
-
-        Debug.Log("Player data has been reset.");
+        // File doesn't exist, create a new one with default values
+        Debug.LogWarning("Save file not found. Creating a new one with default data.");
+        ResetPlayerData();  // Reset data to default
+        SaveToJSON();       // Save default data to a new JSON file
     }
+}
 
     public void SaveToJSON()
     {
@@ -122,28 +125,16 @@ public class Player : MonoBehaviour
         Debug.Log($"Player data saved to: {filePath}");
     }
 
-    public void LoadFromJSON()
+
+
+    public void ResetPlayerData()
     {
-        string filePath = Path.Combine(Application.persistentDataPath, "playerData.json");
+        Points = 0;
+        UnlockedLevel = 1; 
+        LastUnlockedPicture = string.Empty;
+        PuzzleProgress.Clear();
 
-        if (File.Exists(filePath))
-        {
-            string json = File.ReadAllText(filePath);
-
-            PlayerData data = JsonConvert.DeserializeObject<PlayerData>(json);
-
-            Points = data.Points;
-            UnlockedLevel = data.UnlockedLevel;
-            LastUnlockedPicture = data.LastUnlockedPicture;
-            PuzzleProgress = data.PuzzleProgress;
-
-            Debug.Log("Player data loaded successfully.");
-        }
-        else
-        {
-            Debug.LogWarning("Save file not found. Loading default data.");
-            ResetPlayerData();
-        }
+        Debug.Log("Player data has been reset.");
     }
 
 }
