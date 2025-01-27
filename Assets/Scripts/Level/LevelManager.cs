@@ -16,14 +16,10 @@ public class LevelManager : MonoBehaviour
     public GameLoseScreen gameLoseScreen;
 
     public void isGameOver() {
-        //TODO: popup logic
-         Debug.Log ("game OVER!!!!!!!");
          gameLoseScreen.ToggleActiveStatus(true);
          Time.timeScale = 0;  
     }
     public void isGameWin() {
-        //TODO: popup logic
-        Debug.Log ("game WIN!!!!!!!");
         gameWinScreen.ToggleActiveStatus(true);
         Time.timeScale = 0;  
     }
