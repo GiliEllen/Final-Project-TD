@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class MainMenu : MonoBehaviour
     public GameObject achievementsScreen;
     public GameObject galleryScreen;
     public LevelSelectionMenuManager allLevelsScreen;
+    public Player player;
     
     public void ActivateScreen(GameObject screen) {
         screen.SetActive(true);
@@ -26,5 +28,10 @@ public class MainMenu : MonoBehaviour
     public void ActivateLevelManager() {
         allLevelsScreen.gameObject.SetActive(true);
         gameObject.SetActive(false);
+    }
+
+    public void Play() {
+        // player.UnlockedLevel ;
+        SceneManager.LoadScene("Gili-test");
     }
 }
