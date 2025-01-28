@@ -86,7 +86,6 @@ public class Player : MonoBehaviour
 
     if (File.Exists(filePath))
     {
-        // Load the existing file
         string json = File.ReadAllText(filePath);
         PlayerData data = JsonConvert.DeserializeObject<PlayerData>(json);
 
@@ -99,10 +98,9 @@ public class Player : MonoBehaviour
     }
     else
     {
-        // File doesn't exist, create a new one with default values
         Debug.LogWarning("Save file not found. Creating a new one with default data.");
-        ResetPlayerData();  // Reset data to default
-        SaveToJSON();       // Save default data to a new JSON file
+        ResetPlayerData(); 
+        SaveToJSON();  
     }
 }
 
