@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using Newtonsoft.Json;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Player : MonoBehaviour
     public int UnlockedLevel { get; private set; }
     public string LastUnlockedPicture { get; private set; }
     public Dictionary<string, HashSet<int>> PuzzleProgress { get; private set; } = new Dictionary<string, HashSet<int>>();
+    public TextMeshProUGUI myText;
+    public int teddyBearCount = 0;
 
     private void Awake()
     {
@@ -24,12 +27,19 @@ public class Player : MonoBehaviour
 
         // Load player data
         LoadFromJSON();
+        UpdatePoints(Points);
     }
 
     // Methods to update player data
     public void UpdatePoints(int points)
     {
         Points += points;
+        GameObject textObject = GameObject.Find("pointsText");
+        if (textObject != null)
+        {
+            myText = textObject.GetComponent<TextMeshProUGUI>();
+        }
+        myText.text = $"Points: {Points}";
     }
 
     public void UnlockLevel(int level)
@@ -42,13 +52,13 @@ public class Player : MonoBehaviour
 
     public void UnlockPicturePiece(string pictureName, int pieceIndex)
     {
-        //TODO:
-        // if (!PuzzleProgress.ContainsKey(pictureName))
-        // {
-        //     PuzzleProgress[pictureName] = new HashSet<int>();
-        // }
+        if (!PuzzleProgress.ContainsKey(pictureName))
+        {
+            PuzzleProgress[pictureName] = new HashSet<int>();
+        }
 
-        // PuzzleProgress[pictureName].Add(pieceIndex);
+        PuzzleProgress[pictureName].Add(pieceIndex);
+        SaveToJSON();  // Save progress
     }
 
     public void SetLastUnlockedPicture(string pictureName)
@@ -123,8 +133,6 @@ public class Player : MonoBehaviour
         Debug.Log($"Player data saved to: {filePath}");
     }
 
-
-
     public void ResetPlayerData()
     {
         Points = 0;
@@ -133,6 +141,25 @@ public class Player : MonoBehaviour
         PuzzleProgress.Clear();
 
         Debug.Log("Player data has been reset.");
+    }
+
+    public void AddTeddyBear()
+    {
+        teddyBearCount++;
+    }
+
+    public bool CanAfford(int cost)
+    {
+        return Points >= cost;
+    }
+
+
+    public void SpendPoints(int cost)
+    {
+        if (CanAfford(cost))
+        {
+            Points -= cost;
+        }
     }
 
 }
