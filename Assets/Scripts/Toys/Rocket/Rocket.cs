@@ -68,6 +68,7 @@ public class Rocket : Toy
     {
         //here explosion animation
         Debug.Log("Rocket reached target");
+        Destroy(gameObject);
     }
 
 }

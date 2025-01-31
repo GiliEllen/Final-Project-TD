@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6522479640874162117}
-  m_Layer: 4
+  m_Layer: 6
   m_Name: rocketParent
   m_TagString: Rocket
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 2559447705280299615}
   - component: {fileID: 7995208629273283693}
   - component: {fileID: 5231313797089597016}
-  m_Layer: 4
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3260463032358926754, guid: 6d328e82259d99a4f8d47da1ed2e6cc8, type: 3}
       propertyPath: m_Layer
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

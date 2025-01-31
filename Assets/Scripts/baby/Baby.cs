@@ -16,7 +16,7 @@ public class Baby : MonoBehaviour
     }
 
     private void CheckScareLevel() {
-        if (scareLevel >= 100) {
+        if (scareLevel >= 200) {
             levelManager.isGameOver();
         }
     }

@@ -1,8 +1,11 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class SuperZombie : Nightmare
+[RequireComponent(typeof(Rigidbody))]
+public class SuperZombie : Skeleton
 {
     public SuperZombie()
     {
@@ -17,4 +20,6 @@ public class SuperZombie : Nightmare
         scareLevelDisappear = -15;
         isInvisible= false;
     }
+
+    
 }
