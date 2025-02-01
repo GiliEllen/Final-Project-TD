@@ -25,3 +25,7 @@ MonoBehaviour:
     <ID>k__BackingField: 2
     <Size>k__BackingField: {x: 2, y: 2}
     <Prefab>k__BackingField: {fileID: 2471345598771046955, guid: 19c5a040e6d23794da9d2601da5d0b6e, type: 3}
+  - <Name>k__BackingField: Duck
+    <ID>k__BackingField: 3
+    <Size>k__BackingField: {x: 2, y: 2}
+    <Prefab>k__BackingField: {fileID: 5713266922148099351, guid: b15604885b622904eaf5e115caa63852, type: 3}
