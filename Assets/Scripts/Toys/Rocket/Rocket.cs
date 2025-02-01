@@ -71,4 +71,12 @@ public class Rocket : Toy
         DestroyToy();
     }
 
+    public override void DestroyToy() {
+    isAlive = false;
+    GameObject smoke = Instantiate(Resources.Load("Smoke"), transform.position, Quaternion.identity) as GameObject;
+    
+    Transform root = transform.root;     
+    Destroy(root.gameObject);
+    }
+
 }

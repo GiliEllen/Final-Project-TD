@@ -27,12 +27,10 @@ public class Toy : MonoBehaviour
         }
     }
 
-public void DestroyToy() {
+public virtual void DestroyToy() {
     isAlive = false;
-    // Instantiate Smoke prefab at the current position
     GameObject smoke = Instantiate(Resources.Load("Smoke"), transform.position, Quaternion.identity) as GameObject;
     
-    // Destroy the current GameObject immediately
     Destroy(this.gameObject);
 }
 

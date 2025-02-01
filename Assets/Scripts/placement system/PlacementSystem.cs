@@ -27,7 +27,6 @@ public class PlacementSystem : MonoBehaviour
 
     private void Start()
     {
-        // Find the MeshCollider attached to the grid visualization object
         gridMeshCollider = gridVisualization.GetComponent<MeshCollider>();
         
         StopPlacement();
@@ -40,7 +39,7 @@ public class PlacementSystem : MonoBehaviour
         StartPlacement(ID);
         if (selectedObjectIndex >= 0)
         {
-            // gridVisualization.SetActive(true);
+            gridVisualization.SetActive(true);
             preview.StartShowingPlacementPreview(database.objectsData[selectedObjectIndex].Prefab, database.objectsData[selectedObjectIndex].Size);
         }
         else
@@ -62,7 +61,7 @@ public class PlacementSystem : MonoBehaviour
     private void StopPlacement()
     {
         selectedObjectIndex = -1;
-        // gridVisualization.SetActive(false);
+        gridVisualization.SetActive(false);
         preview.StopShowingPreview();
     }
 
