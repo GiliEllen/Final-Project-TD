@@ -5,8 +5,14 @@ public class Hoop : MonoBehaviour
     public float speed = 10f; 
     public int damage = 5; 
     public float secondsToInactive = 2f;
+    [SerializeField] private float knockBackForceMagnitude;
 
     private float initialY; 
+
+    public float GetKnockBackForceMagnitude()
+    { 
+        return knockBackForceMagnitude; 
+    }
 
     void Start()
     {
@@ -35,6 +41,6 @@ public class Hoop : MonoBehaviour
     }
     private void DeactivateHoop()
     {
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }

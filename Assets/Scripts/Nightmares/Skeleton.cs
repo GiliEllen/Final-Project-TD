@@ -1,20 +1,30 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Skeleton : Nightmare
 {
-    public Skeleton()
+
+    protected virtual void OnCollisionEnter(Collision collision)
     {
-        hp = 10;
-        isMoving = true;
-        gridWidth = 1;
-        gridHeight = 1;
-        speed = 1f;
-        scareLevelAppear = 5;
-        scareLevelPassive = 7;
-        scareLevelReachWall = 40;
-        scareLevelDisappear = -10;
-        isInvisible= false;
+        GameObject collidedObject = collision.gameObject;
+        Hoop hoop = collidedObject.GetComponent<Hoop>();
+        if (hoop != null)
+        {
+            KnockBack(hoop.GetKnockBackForceMagnitude());
+        }
+        else
+        {
+            Ball ball = collidedObject.GetComponent<Ball>();
+            if (ball != null)
+                KnockBack(ball.GetKnockBackForce());
+        }
+    }
+
+    private void KnockBack(float knockBackMagnitude)
+    {
+        isMoving = false;
+        transform.DOMoveZ(transform.position.z + knockBackMagnitude, 0.4f).OnComplete(() => isMoving = true);
     }
 }
