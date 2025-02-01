@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4541863650054089748
+--- !u!1001 &434502374388178878
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 349792622615180525, guid: b15604885b622904eaf5e115caa63852, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 349792622615180525, guid: b15604885b622904eaf5e115caa63852, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.198
+      objectReference: {fileID: 0}
     - target: {fileID: 5713266922148099351, guid: b15604885b622904eaf5e115caa63852, type: 3}
       propertyPath: m_Name
       value: DuckNoMove
@@ -18,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6071242936159279369, guid: b15604885b622904eaf5e115caa63852, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6071242936159279369, guid: b15604885b622904eaf5e115caa63852, type: 3}
       propertyPath: m_LocalPosition.z
@@ -54,6 +62,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3124605998286637924, guid: b15604885b622904eaf5e115caa63852, type: 3}
+    - {fileID: 4449654154990721652, guid: b15604885b622904eaf5e115caa63852, type: 3}
+    - {fileID: 4000360341630099870, guid: b15604885b622904eaf5e115caa63852, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

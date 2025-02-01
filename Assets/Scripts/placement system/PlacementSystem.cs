@@ -40,7 +40,7 @@ public class PlacementSystem : MonoBehaviour
         if (selectedObjectIndex >= 0)
         {
             gridVisualization.SetActive(true);
-            preview.StartShowingPlacementPreview(database.objectsData[selectedObjectIndex].Prefab, database.objectsData[selectedObjectIndex].Size);
+            preview.StartShowingPlacementPreview(database.objectsData[selectedObjectIndex].PrefabPreview, database.objectsData[selectedObjectIndex].Size);
         }
         else
         {
@@ -113,7 +113,7 @@ public class PlacementSystem : MonoBehaviour
 
         // Instantiate and place the object
         GameObject newObject = Instantiate(database.objectsData[selectedObjectIndex].Prefab);
-        newObject.transform.position = new(validPosition.x, 2, validPosition.z);
+        newObject.transform.position = new(validPosition.x, 1.5F, validPosition.z);
 
         PlacementButton buttonAtIndex = placementButtons[selectedObjectIndex];
         buttonAtIndex.StartCooldown();

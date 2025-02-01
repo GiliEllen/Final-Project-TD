@@ -17,15 +17,19 @@ MonoBehaviour:
     <ID>k__BackingField: 0
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 1659342489672612934, guid: 838fc8dafff50884ab412e056e9294af, type: 3}
+    <PrefabPreview>k__BackingField: {fileID: 1659342489672612934, guid: 838fc8dafff50884ab412e056e9294af, type: 3}
   - <Name>k__BackingField: Rocket
     <ID>k__BackingField: 1
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 7197353587444171559, guid: 09aceff1c59452b48b11c0c1a0a96496, type: 3}
+    <PrefabPreview>k__BackingField: {fileID: 0}
   - <Name>k__BackingField: Pyramid
     <ID>k__BackingField: 2
     <Size>k__BackingField: {x: 2, y: 2}
     <Prefab>k__BackingField: {fileID: 2471345598771046955, guid: 19c5a040e6d23794da9d2601da5d0b6e, type: 3}
+    <PrefabPreview>k__BackingField: {fileID: 0}
   - <Name>k__BackingField: Duck
     <ID>k__BackingField: 3
     <Size>k__BackingField: {x: 2, y: 2}
     <Prefab>k__BackingField: {fileID: 5713266922148099351, guid: b15604885b622904eaf5e115caa63852, type: 3}
+    <PrefabPreview>k__BackingField: {fileID: 5282212626101234345, guid: 7b2c1a53cf86da147b83a512a8029989, type: 3}

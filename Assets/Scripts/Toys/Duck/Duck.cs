@@ -9,7 +9,8 @@ public class Duck : Toy
     private float minYRotation = 40f;
     private float maxYRotation = 150f;
     private float zSpeed = 20f; // Speed in the Z direction
-    private float activeTimer = 20f;
+    private float timeActive = 20f;
+    private float activeTimer = 0f;
     
     private void Start()
     {
@@ -60,7 +61,6 @@ public class Duck : Toy
 
         private void Update()
     {
-       
         activeTimer += Time.deltaTime;
         if (activeTimer >= timeActive)
         {
