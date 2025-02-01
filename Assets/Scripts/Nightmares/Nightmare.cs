@@ -51,8 +51,9 @@ public class Nightmare : MonoBehaviour
     public void DestroyNightmare() {
         isAlive = false;
         //TODO: add logic - remove from active playerToys
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
         NightmareDestroyed(scareLevelDisappear);
+        Destroy(gameObject);
     }
 
     public virtual void Move() 

@@ -15,14 +15,14 @@ public class LevelManager : MonoBehaviour
     public GameWinScreen gameWinScreen;
     public GameLoseScreen gameLoseScreen;
 
-    public void isGameOver() {
+    /*public void isGameOver() {
          gameLoseScreen.ToggleActiveStatus(true);
          Time.timeScale = 0;  
-    }
-    public void isGameWin() {
+    }*/
+    /*public void isGameWin() {
         gameWinScreen.ToggleActiveStatus(true);
         Time.timeScale = 0;  
-    }
+    }*/
 
     private void Start()
     {
@@ -57,7 +57,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        isGameWin();
+        //isGameWin();
     }
     private void UpdateScareLevel()
     {

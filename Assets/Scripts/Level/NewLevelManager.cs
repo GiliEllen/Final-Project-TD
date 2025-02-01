@@ -8,19 +8,27 @@ using UnityEngine.SceneManagement;
 
 public class NewLevelManager : MonoBehaviour
 {
-    private int _numberOfMonsters;
+    [SerializeField] private int _numberOfMonsters;
     [SerializeField] private int levelIndex;
     private const string BaseLevelSceneName = "Level";
     private const int VictorySceneIndex = 7;
     private const int GameOverSceneIndex = 8;
     [SerializeField] private float delayBetweenLevels;
     private bool _wasEndSceneLoaded;
+    [SerializeField] private GameWinScreen gameWinScreen;
+    [SerializeField] private GameLoseScreen gameLoseScreen;
+    [SerializeField] private Baby baby;
 
+    public event Action LevelStarted = delegate { };
     public event Action LevelCompleted = delegate { };
+    public event Action LevelLost = delegate { };
 
     private void Start()
     {
+        gameWinScreen.ContinuePressed += () => LoadNextLevel(levelIndex + 1);
         Nightmare.NightmareDestroyed += OnMonsterDied;
+        baby.BabyScared += OnLost;
+        gameLoseScreen.RestartGame += () => LoadNextLevel(1);
         LoadLevel(levelIndex, 0);
     }
 
@@ -35,17 +43,25 @@ public class NewLevelManager : MonoBehaviour
         return unloadLevelOperation;
     }
 
+    private void OnLost()
+    {
+        LevelLost();
+    }
+
     private void OnMonsterDied(float scareLevelToDecrease)
     {
         _numberOfMonsters--;
-        CalculateNumberOfMonstersInLevel();
         if (_numberOfMonsters <= 0)
         {
             LevelCompleted();
-            int nextLevelIndex = levelIndex + 1;
-            AsyncOperation unloadLevelOperation = UnloadCurrentLevel();
-            unloadLevelOperation.completed += (_) => LoadLevel(nextLevelIndex, delayBetweenLevels);
         }
+    }
+
+    private void LoadNextLevel(int nextLevelIndex)
+    {
+        AsyncOperation unloadLevelOperation = UnloadCurrentLevel();
+        levelIndex = nextLevelIndex;
+        unloadLevelOperation.completed += (_) => LoadLevel(levelIndex, delayBetweenLevels);
     }
 
 
@@ -65,7 +81,13 @@ public class NewLevelManager : MonoBehaviour
             _wasEndSceneLoaded = true;
             //loadLevelOperation.completed += (_) => OnEndSceneLoaded();
         }
-        else loadLevelOperation.completed += (_) => CalculateNumberOfMonstersInLevel();
+        else loadLevelOperation.completed += OnLevelLoaded;
+    }
+
+    private void OnLevelLoaded(AsyncOperation op)
+    {
+        LevelStarted();
+        CalculateNumberOfMonstersInLevel();
     }
 
     private bool IsNextSceneEndScene(int nextLevelIndex)
@@ -86,7 +108,7 @@ public class NewLevelManager : MonoBehaviour
 
     private void CalculateNumberOfMonstersInLevel()
     {
-        _numberOfMonsters = FindObjectsByType<Nightmare>(FindObjectsSortMode.None).Length;
+        _numberOfMonsters = FindObjectsByType<Nightmare>(FindObjectsInactive.Include, FindObjectsSortMode.None).Length;
     }
 
     public void MoveToActiveScene(GameObject objectToMove)
