@@ -12,6 +12,7 @@ public class GameLoseScreen : MonoBehaviour
     public void ReloadScene()
     {
         Scene currentScene = SceneManager.GetActiveScene();
+        
         SceneManager.LoadScene(currentScene.name);
     }
 

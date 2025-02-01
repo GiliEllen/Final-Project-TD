@@ -8,8 +8,7 @@ public class Duck : Toy
     private float maxX = 4f;
     private float minYRotation = 40f;
     private float maxYRotation = 150f;
-    private float zSpeed = 20f; // Speed in the Z direction
-    private float timeActive = 20f;
+    private float zSpeed = 20f; // Speed in the Z direction 
     private float activeTimer = 0f;
     
     private void Start()
@@ -17,6 +16,7 @@ public class Duck : Toy
         timeActive = 20f;
         isMovable = true;
         isMoving = true;
+        timeActive = 20f;
         MoveDuck();
     }
     
