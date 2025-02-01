@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 974260840767828890}
   - component: {fileID: 25017003984635911}
   - component: {fileID: 347679575900213592}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wizard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ MonoBehaviour:
   touchedWall: 0
   scareLevelAppear: 10
   scareLevelPassive: 0
-  scareLevelReachWall: 60
+  scareLevelReachWall: 0
   scareLevelDisappear: -15
   isInvisible: 0
   attackChargeTime: 8
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 5575919780069402924}
   - component: {fileID: 884570770080234755}
   - component: {fileID: 97234259503496709}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WizardCharge
   m_TagString: Untagged
   m_Icon: {fileID: 0}

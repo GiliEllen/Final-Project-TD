@@ -4,6 +4,7 @@ public class Ball : Toy
 {
     public float speed = 5f;  
     private Rigidbody rb;
+    [SerializeField] private float knockBackForce;
 
     public Ball()
     {
@@ -30,13 +31,14 @@ public class Ball : Toy
         MoveBall();
     }
 
-    public void MoveBall()
+    private void MoveBall()
     {
         rb = GetComponent<Rigidbody>();
 
         Vector3 trajectory = BallTrajectory.CalculateTrajectory(GameObject.Find("center"), transform);
         rb.velocity = trajectory * speed;
     }
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -53,5 +55,10 @@ public class Ball : Toy
     private void Update() {
         elapsedTime += Time.deltaTime;
         ActivatedTimeIsUp();
+    }
+
+    public float GetKnockBackForce()
+    {
+        return knockBackForce;
     }
 }
