@@ -11,9 +11,9 @@ public class Nightmare : MonoBehaviour
     public float gridHeight;
     public bool isAlive = true;
     public float speed = 1;
-    public GameObject plane;
+    //public GameObject plane;
     public float timeToInitialize;
-    public BabyWall babyWall;
+    //public BabyWall babyWall;
     public bool touchedWall = false;
     public float scareLevelAppear;
     public float scareLevelPassive;
