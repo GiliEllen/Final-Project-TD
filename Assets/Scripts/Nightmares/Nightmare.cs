@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,13 @@ public class Nightmare : MonoBehaviour
     public float scareLevelReachWall;
     public float scareLevelDisappear;
     public bool isInvisible;
+    //public static event Action NightmareCreated = delegate { };
+    public static event Action<float> NightmareDestroyed = delegate { };
+
+    private void Start()
+    {
+        //NightmareCreated();
+    }
 
     private void Update()
     {
@@ -37,8 +45,9 @@ public class Nightmare : MonoBehaviour
         isAlive = false;
         //TODO: add logic - remove from active playerToys
         gameObject.SetActive(false);
-        babyWall.AdjustNightMareCount(-1);
-        babyWall.UpdateScareLevel(scareLevelDisappear);
+        //babyWall.AdjustNightMareCount(-1);
+        //babyWall.UpdateScareLevel(scareLevelDisappear);
+        NightmareDestroyed(scareLevelDisappear);
     }
 
     public virtual void Move() 

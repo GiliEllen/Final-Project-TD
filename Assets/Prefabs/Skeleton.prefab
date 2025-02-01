@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2910253219080414487}
   - component: {fileID: 2120298653741094683}
   - component: {fileID: 8895868879299537657}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Skeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,9 +130,10 @@ MonoBehaviour:
   babyWall: {fileID: 0}
   touchedWall: 0
   scareLevelAppear: 5
-  scareLevelPassive: 7
-  scareLevelReachWall: 40
-  scareLevelDisappear: -10
+  scareLevelPassive: 0
+  scareLevelReachWall: 20
+  scareLevelDisappear: -20
+  isInvisible: 0
 --- !u!54 &8895868879299537657
 Rigidbody:
   m_ObjectHideFlags: 0

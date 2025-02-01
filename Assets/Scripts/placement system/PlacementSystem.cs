@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using static UnityEngine.UI.Image;
 
 public class PlacementSystem : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class PlacementSystem : MonoBehaviour
     public List<PlacementButton> placementButtons;
 
     private MeshCollider gridMeshCollider;
+
+    [SerializeField] private LayerMask placementObstructionsLayerMask;
 
     private void Start()
     {
@@ -102,13 +105,29 @@ public class PlacementSystem : MonoBehaviour
         // Get a valid position for placing the object inside the grid bounds
         Vector3 validPosition = GetValidPositionInsideGrid(gridPosition);
 
+        Vector2 size = database.objectsData[selectedObjectIndex].Size;
+        if (database.objectsData[selectedObjectIndex].Name != "Rocket" && !IsPositionAvailable(validPosition, size))
+        {
+            StopPlacement();
+            return;
+        }
+
         // Instantiate and place the object
         GameObject newObject = Instantiate(database.objectsData[selectedObjectIndex].Prefab);
-        newObject.transform.position = validPosition;
+        newObject.transform.position = new(validPosition.x, 0, validPosition.z);
 
         PlacementButton buttonAtIndex = placementButtons[selectedObjectIndex];
         buttonAtIndex.StartCooldown();
 
         StopPlacement();
     }
+
+    private bool IsPositionAvailable(Vector3 pos, Vector2 size)
+    {
+        pos = new(pos.x + size.x / 2, pos.y, pos.z + size.y / 2f);
+        bool res = Physics.CheckBox(pos, new(size.x / 2, 15f, size.y / 2), 
+            Quaternion.identity, placementObstructionsLayerMask);
+                return !res;
+    }
+
 }
