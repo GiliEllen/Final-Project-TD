@@ -71,5 +71,6 @@ public class Pyramid : Toy
     {
         isShooting = false;
         gameObject.SetActive(false);
+        DestroyToy();
     }
 }

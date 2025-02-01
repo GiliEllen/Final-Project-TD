@@ -8,13 +8,15 @@ public class Duck : Toy
     private float maxX = 4f;
     private float minYRotation = 40f;
     private float maxYRotation = 150f;
-    private float zSpeed = 20f; // Speed in the Z direction
+    private float zSpeed = 20f; // Speed in the Z direction 
+    private float activeTimer = 0f;
     
     private void Start()
     {
         timeActive = 20f;
         isMovable = true;
         isMoving = true;
+        timeActive = 20f;
         MoveDuck();
     }
     
@@ -49,5 +51,21 @@ public class Duck : Toy
                 return;
             }
         } 
+    }
+
+        private void Deactivate()
+    {
+        gameObject.SetActive(false);
+        DestroyToy();
+    }
+
+        private void Update()
+    {
+        activeTimer += Time.deltaTime;
+        if (activeTimer >= timeActive)
+        {
+           Deactivate();
+        }
+        
     }
 }

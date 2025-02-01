@@ -26,11 +26,13 @@ public class Toy : MonoBehaviour
         }
     }
 
-    public void DestroyToy() {
-        isAlive = false;
-        //TODO: add logic - remove from active playerToys
-        this.gameObject.SetActive(false);
-    }
+public virtual void DestroyToy() {
+    isAlive = false;
+    GameObject smoke = Instantiate(Resources.Load("Smoke"), transform.position, Quaternion.identity) as GameObject;
+    
+    Destroy(this.gameObject);
+}
+
 
     public void levelUp(float addedHp = 0, float addedShotAmount = 0) {
           //TODO: add logic - change this parameters in PlayerToys

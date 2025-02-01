@@ -68,7 +68,15 @@ public class Rocket : Toy
     {
         //here explosion animation
         Debug.Log("Rocket reached target");
-        Destroy(gameObject);
+        DestroyToy();
+    }
+
+    public override void DestroyToy() {
+    isAlive = false;
+    GameObject smoke = Instantiate(Resources.Load("Smoke"), transform.position, Quaternion.identity) as GameObject;
+    
+    Transform root = transform.root;     
+    Destroy(root.gameObject);
     }
 
 }
