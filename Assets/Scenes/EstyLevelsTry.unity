@@ -1970,7 +1970,8 @@ PrefabInstance:
       propertyPath: nightmares.Array.data[2]
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7326435328086895155, guid: a3fb4cb3acdd283409c1e24227b80ad4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

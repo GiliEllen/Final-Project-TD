@@ -116,6 +116,7 @@ private Vector3 GetValidPositionInsideGrid(Vector3Int gridPosition, float sizeX)
 
     GameObject newObject = Instantiate(database.objectsData[selectedObjectIndex].Prefab);
     newObject.transform.position = new(validPosition.x, 1.5F, validPosition.z);
+    levelManager.MoveToLevelScene(newObject);
 
     PlacementButton buttonAtIndex = placementButtons[selectedObjectIndex];
     buttonAtIndex.StartCooldown();
