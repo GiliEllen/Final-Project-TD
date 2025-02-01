@@ -114,7 +114,7 @@ public class PlacementSystem : MonoBehaviour
 
         // Instantiate and place the object
         GameObject newObject = Instantiate(database.objectsData[selectedObjectIndex].Prefab);
-        newObject.transform.position = new(validPosition.x, 0, validPosition.z);
+        newObject.transform.position = new(validPosition.x, 2, validPosition.z);
 
         PlacementButton buttonAtIndex = placementButtons[selectedObjectIndex];
         buttonAtIndex.StartCooldown();
