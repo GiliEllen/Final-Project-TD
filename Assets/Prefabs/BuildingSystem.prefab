@@ -143,7 +143,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1cdf352e1daa0f4499820255b8b924e2, type: 2}
+  - {fileID: -876546973899608171, guid: cd24efd4436ad594498397871af69f59, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -374,6 +374,10 @@ MonoBehaviour:
   database: {fileID: 11400000, guid: 3f7373b2211589946bcd19a24063575f, type: 2}
   gridVisualization: {fileID: 4500826147344543807}
   preview: {fileID: 1001451324381425525}
+  placementButtons: []
+  placementObstructionsLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &7355872131122595909
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,7 +424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previewYOffset: 0.06
   cellIndicator: {fileID: 1729358351186778243}
-  previewMaterialPrefab: {fileID: 2100000, guid: 23fe87588197109449d5f0ab7939ae5e, type: 2}
+  previewMaterialPrefab: {fileID: -876546973899608171, guid: 7026005195de21d47a5ea1a7b0e5ab9c, type: 3}
 --- !u!1 &8070680483743786606
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,6 +557,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7981392432604731991, guid: 1a58cd6aa9af4a348a27868ec16a4596, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 248f3421f698dc64e9982d53ce13bac2, type: 2}
     - target: {fileID: 8944695696177384349, guid: 1a58cd6aa9af4a348a27868ec16a4596, type: 3}
       propertyPath: m_Layer
       value: 4
