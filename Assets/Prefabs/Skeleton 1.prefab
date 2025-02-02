@@ -125,9 +125,7 @@ MonoBehaviour:
   gridHeight: 1
   isAlive: 1
   speed: 1
-  plane: {fileID: 0}
   timeToInitialize: 1
-  babyWall: {fileID: 0}
   touchedWall: 0
   scareLevelAppear: 5
   scareLevelPassive: 0
