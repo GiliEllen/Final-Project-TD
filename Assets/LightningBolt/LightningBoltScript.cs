@@ -97,6 +97,7 @@ namespace DigitalRuby.LightningBolt
         private int animationPingPongDirection = 1;
         private bool orthographic;
         private float elapsedTime;
+          private AudioSource audioSource; // Store AudioSource reference
 
         private void GetPerpendicularVector(ref Vector3 directionNormalized, out Vector3 side)
         {
@@ -291,7 +292,17 @@ namespace DigitalRuby.LightningBolt
             lineRenderer = GetComponent<LineRenderer>();
             lineRenderer.positionCount = 0;
             UpdateFromMaterialChange();
-        }
+            // Get the AudioSource and play it at the start
+            audioSource = GetComponent<AudioSource>();
+                if (audioSource != null && audioSource.clip != null)
+                {
+                    audioSource.Play();
+                }
+                else
+                {
+                    Debug.LogWarning("No AudioSource or AudioClip found on Lightning!");
+                }
+            }
 
         private void Update()
         {
@@ -310,16 +321,63 @@ namespace DigitalRuby.LightningBolt
             }
             timer -= Time.deltaTime;
 
-             elapsedTime += Time.deltaTime;
-            if (elapsedTime >= 1) {
+            elapsedTime += Time.deltaTime;
+            if (elapsedTime >= 1) 
+            {
                 DestroyLightning();
             }
         }
 
 
-        public void DestroyLightning() {
-            Destroy(gameObject);
+ public void DestroyLightning()
+    {
+         if (lineRenderer != null)
+        {
+            lineRenderer.enabled = false; // Hides the lightning visually
         }
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            // Keep the object alive until the sound finishes
+            Destroy(gameObject, audioSource.clip.length - audioSource.time);
+        }
+        else
+        {
+            Destroy(gameObject); // If no audio or it's done playing, destroy immediately
+        }
+    }
+
+    private void PlayAndDestroyAudio()
+    {
+        AudioSource originalAudio = GetComponent<AudioSource>();
+
+        if (originalAudio == null || originalAudio.clip == null)
+        {
+            Debug.LogWarning("No AudioSource or AudioClip found on Lightning!");
+            Destroy(gameObject);
+            return;
+        }
+
+        // Create a new GameObject to handle the sound
+        GameObject tempAudio = new GameObject("TempAudio");
+        AudioSource newAudio = tempAudio.AddComponent<AudioSource>();
+
+        // Copy properties of the original AudioSource
+        newAudio.clip = originalAudio.clip;
+        newAudio.volume = originalAudio.volume;
+        newAudio.pitch = originalAudio.pitch;
+        newAudio.spatialBlend = originalAudio.spatialBlend;
+        newAudio.loop = false;
+
+        // Play the sound
+        newAudio.Play();
+
+        // Destroy the temporary GameObject after the sound finishes
+        Destroy(tempAudio, newAudio.clip.length);
+
+        // Destroy the Lightning GameObject immediately
+        Destroy(gameObject);
+    }
+
 
         /// <summary>
         /// Trigger a lightning bolt. Use this if ManualMode is true.
