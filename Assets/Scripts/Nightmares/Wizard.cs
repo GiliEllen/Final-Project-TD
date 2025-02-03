@@ -49,7 +49,13 @@ public class Wizard : Nightmare
             float damage = Mathf.Clamp(10f / distance, minDamage, maxDamage); 
             
             damage = Mathf.Round(damage);
+           GameObject lightning = Instantiate(
+                Resources.Load("Lightning"), 
+                new Vector3(toy.transform.position.x -2f, 6f, toy.transform.position.z -2f), 
+                Quaternion.Euler(0, 0, 90)
+             ) as GameObject;
 
+            // GameObject darkSmoke = Instantiate(Resources.Load("DarkSmoke"), transform.position, Quaternion.identity) as GameObject;
             toy.TakeDamage(damage);
         }
 
