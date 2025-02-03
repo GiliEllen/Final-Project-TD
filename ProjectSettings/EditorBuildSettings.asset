@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Gili-test.unity
     guid: 5d72e1715429d6344a59ae3ff886903d
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: d9286d2ff7431c34db91fa961039b741
+  - enabled: 1
+    path: Assets/Scenes/EstyLevelsTry.unity
+    guid: 27e39b58f2fde9043960f3abdbff088d
+  - enabled: 1
     path: Assets/Scenes/Levels/Level1.unity
     guid: aeec178572bf95f44be60eb7907addea
   - enabled: 1

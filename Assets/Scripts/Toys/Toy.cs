@@ -19,7 +19,6 @@ public class Toy : MonoBehaviour
     public string type;
 
 
-
     public void TakeDamage(float howMuch) {
         hp -= howMuch;
         if (hp >= 0 ) {

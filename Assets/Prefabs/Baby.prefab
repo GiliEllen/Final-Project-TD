@@ -47,3 +47,4 @@ MonoBehaviour:
   scareLevel: 0
   levelManager: {fileID: 0}
   scareText: {fileID: 0}
+  maxScareLevel: 200
