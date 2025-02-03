@@ -10,7 +10,7 @@ public class BabyWall : MonoBehaviour
     private void Start()
     {
         Nightmare.NightmareDestroyed += OnNightmareDestoryed;
-        InvokeRepeating("UpdateScareLevel", 0f, 1f);
+        //InvokeRepeating("UpdateScareLevel", 0f, 1f);
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -33,6 +33,7 @@ public class BabyWall : MonoBehaviour
             nightmareCount = 0;
             return;
         }
+        Debug.Log("increasing scare level");
         baby.AdjustScare(nightmareCount * 1);
     }
 
@@ -42,7 +43,9 @@ public class BabyWall : MonoBehaviour
         UpdateScareLevel(scareLevelToDecrease);
     }
 
-    public void UpdateScareLevel(float amount) {
+    public void UpdateScareLevel(float amount) 
+    {
+
         baby.AdjustScare(amount);
     }
 }

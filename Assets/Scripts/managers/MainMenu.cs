@@ -32,6 +32,6 @@ public class MainMenu : MonoBehaviour
 
     public void Play() {
         // player.UnlockedLevel ;
-        SceneManager.LoadScene("Gili-test");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

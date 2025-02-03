@@ -15,11 +15,21 @@ public class PlacementButton : MonoBehaviour
     private void Start()
     {
         button = GetComponent<Button>();
+        InitActiveStatusListeners();
+
 
         if (button == null)
         {
             Debug.LogError("No Button component found on this GameObject.");
         }
+    }
+
+    private void InitActiveStatusListeners()
+    {
+        NewLevelManager levelManager = GetComponentInParent<NewLevelManager>();
+        levelManager.LevelCompleted += DisableButton;
+        levelManager.LevelLost += DisableButton;
+        levelManager.LevelStarted += EnableButton;
     }
 
     private void Update()

@@ -11,11 +11,23 @@ public class InputManager : MonoBehaviour
 
     [SerializeField]
     private LayerMask placementLayermask;
+    [SerializeField] private NewLevelManager levelManager;
 
     public event Action OnDrag, OnDrop;
 
     private bool isTouching;
 
+    private void Start()
+    {
+        levelManager.LevelStarted += () => SetInputStatus(true);
+        levelManager.LevelCompleted += () => SetInputStatus(false);
+        levelManager.LevelLost += () => SetInputStatus(false);
+    }
+
+    private void SetInputStatus(bool isActive)
+    {
+        gameObject.SetActive(isActive);
+    }
     private void Update()
     {
 #if UNITY_EDITOR

@@ -59,7 +59,7 @@ public class Pyramid : Toy
 
         if (hoopPrefab != null)
         {
-            Instantiate(hoopPrefab, firePoint, Quaternion.identity);
+            Instantiate(hoopPrefab, firePoint, Quaternion.identity, transform);
         }
         else
         {

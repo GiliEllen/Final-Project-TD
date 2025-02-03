@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Nightmare : MonoBehaviour
@@ -21,9 +22,17 @@ public class Nightmare : MonoBehaviour
     //public static event Action NightmareCreated = delegate { };
     public static event Action<float> NightmareDestroyed = delegate { };
 
-    private void Start()
+    protected async virtual void Awake()
     {
+        await DelayActivation();
         //NightmareCreated();
+    }
+
+    private async Task DelayActivation()
+    {
+        gameObject.SetActive(false);
+        await Task.Delay(TimeSpan.FromSeconds(timeToInitialize));
+        gameObject.SetActive(true);
     }
 
     private void Update()
@@ -46,6 +55,7 @@ public class Nightmare : MonoBehaviour
         GameObject smoke = Instantiate(Resources.Load("DarkSmoke"), transform.position, Quaternion.identity) as GameObject;
     
         NightmareDestroyed(scareLevelDisappear);
+        Destroy(gameObject);
     }
 
     public virtual void Move() 
