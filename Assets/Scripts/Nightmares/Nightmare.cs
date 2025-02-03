@@ -51,7 +51,9 @@ public class Nightmare : MonoBehaviour
     public void DestroyNightmare() {
         isAlive = false;
         //TODO: add logic - remove from active playerToys
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
+        GameObject smoke = Instantiate(Resources.Load("DarkSmoke"), transform.position, Quaternion.identity) as GameObject;
+    
         NightmareDestroyed(scareLevelDisappear);
         Destroy(gameObject);
     }
