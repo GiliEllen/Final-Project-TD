@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2437240098865275736}
   - component: {fileID: 2421645332582017992}
   - component: {fileID: 2951988600018817560}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6594660560089634437}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LightningStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7835398937126093117}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LightningEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
