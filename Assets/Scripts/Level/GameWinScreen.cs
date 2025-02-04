@@ -21,11 +21,7 @@ public class GameWinScreen : MonoBehaviour
         ContinuePressed();
     }
 
-    public void GoBack() {
-        SceneManager.LoadScene("MainMenu");
-    }
-
-    public void ToggleActiveStatus(bool status) {
+    private void ToggleActiveStatus(bool status) {
         gameObject.SetActive(status);
     }
 
