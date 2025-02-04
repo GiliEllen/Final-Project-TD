@@ -332,6 +332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 111153523}
   - component: {fileID: 111153522}
+  - component: {fileID: 111153524}
   m_Layer: 0
   m_Name: RedPortal
   m_TagString: Untagged
@@ -406,6 +407,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &111153524
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111153521}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4bad6f168ceabda4aa7a349632fadab8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &111212599 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5416987285411062728, guid: 1cd703c8e685db2499fc2a66fec7354e, type: 3}
