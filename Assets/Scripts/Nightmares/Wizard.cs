@@ -51,7 +51,7 @@ public class Wizard : Nightmare
             damage = Mathf.Round(damage);
            GameObject lightning = Instantiate(
                 Resources.Load("Lightning"), 
-                new Vector3(toy.transform.position.x -2f, 6f, toy.transform.position.z -2f), 
+                new Vector3(toy.transform.position.x, 6f, toy.transform.position.z), 
                 Quaternion.Euler(0, 0, 90)
              ) as GameObject;
 
