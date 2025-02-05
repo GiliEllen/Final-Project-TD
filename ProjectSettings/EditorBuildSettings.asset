@@ -15,8 +15,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: d9286d2ff7431c34db91fa961039b741
   - enabled: 1
-    path: Assets/Scenes/Showcasing.unity
-    guid: b7b0af025bfc2334eb13539578b078e1
+    path: Assets/Scenes/ShowcaseUpdated.unity
+    guid: b46f06579eb0d734b83a405b696fe14d
   - enabled: 1
     path: Assets/Scenes/Levels/Level1.unity
     guid: aeec178572bf95f44be60eb7907addea
