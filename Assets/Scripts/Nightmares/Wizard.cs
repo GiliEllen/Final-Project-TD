@@ -10,6 +10,7 @@ public class Wizard : Nightmare
     public float minDamage = 5f;
     public float maxDamage = 10f;
 
+
     public Wizard()
     {
         hp = 15;
@@ -65,6 +66,7 @@ public class Wizard : Nightmare
 
     private void Start()
     {
+        // activatePortal = false;
         StartCharging();
     }
 

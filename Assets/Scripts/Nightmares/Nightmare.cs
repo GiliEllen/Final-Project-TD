@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-using DG.Tweening; 
-
+using DG.Tweening;
 
 public class Nightmare : MonoBehaviour
 {
@@ -21,28 +20,44 @@ public class Nightmare : MonoBehaviour
     public float scareLevelReachWall;
     public float scareLevelDisappear;
     public bool isInvisible;
+    private bool activatePortal = true;
     //public static event Action NightmareCreated = delegate { };
     public static event Action<float> NightmareDestroyed = delegate { };
+
+    private bool isMovementDelayed = false;
 
     protected async virtual void Awake()
     {
         await DelayActivation();
-        //NightmareCreated();
     }
 
     private async Task DelayActivation()
     {
-        gameObject.SetActive(false);
+        gameObject.SetActive(false); 
         await Task.Delay(TimeSpan.FromSeconds(timeToInitialize));
-        gameObject.SetActive(true);
+        if (activatePortal) {
+            GameObject portal = Instantiate(Resources.Load("EnemyPortal"), transform.position, Quaternion.identity) as GameObject;
+        }
+
+        gameObject.SetActive(true); 
+        
+        await StartMovementDelay();
+    }
+
+    private async Task StartMovementDelay()
+    {
+        await Task.Delay(1000); 
+        isMovementDelayed = true;
     }
 
     private void Update()
     {
-        Move();
+        if (isMovementDelayed)
+        {
+            Move();
+        }
     }
 
-    
     public void TakeDamage(float howMuch) {
         hp -= howMuch;
 
@@ -52,12 +67,13 @@ public class Nightmare : MonoBehaviour
             DestroyNightmare();
         }
     }
+
     public void DestroyNightmare() {
         isAlive = false;
         //TODO: add logic - remove from active playerToys
         gameObject.SetActive(false);
         GameObject smoke = Instantiate(Resources.Load("DarkSmoke"), transform.position, Quaternion.identity) as GameObject;
-    
+
         NightmareDestroyed(scareLevelDisappear);
         Destroy(gameObject);
     }
@@ -69,5 +85,4 @@ public class Nightmare : MonoBehaviour
             transform.Translate(Vector3.back * speed * Time.deltaTime);
         }
     }
-
 }

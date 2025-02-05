@@ -30,6 +30,7 @@ public class NewLevelManager : MonoBehaviour
         baby.BabyScared += OnLost;
         gameLoseScreen.RestartGame += () => LoadNextLevel(1);
         LoadLevel(levelIndex, 0);
+        InvokeRepeating("UpdateScareLevel", 0f, 1f);
     }
 
     private void OnDestroy()
@@ -119,5 +120,11 @@ public class NewLevelManager : MonoBehaviour
     public void MoveToLevelScene(GameObject objectToMove)
     {
         SceneManager.MoveGameObjectToScene(objectToMove, SceneManager.GetSceneByName(GetLevelSceneName(levelIndex)));
+    }
+
+
+    private void UpdateScareLevel()
+    {
+        baby.AdjustScare(1 * _numberOfMonsters);
     }
 }
