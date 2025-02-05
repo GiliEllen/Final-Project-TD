@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using DG.Tweening; 
+
 
 public class Nightmare : MonoBehaviour
 {
@@ -43,11 +45,13 @@ public class Nightmare : MonoBehaviour
     
     public void TakeDamage(float howMuch) {
         hp -= howMuch;
+
+        transform.DOShakePosition(0.3f, strength: 0.2f, vibrato: 10, randomness: 90);
+
         if (hp <= 0 ) {
             DestroyNightmare();
         }
     }
-
     public void DestroyNightmare() {
         isAlive = false;
         //TODO: add logic - remove from active playerToys
