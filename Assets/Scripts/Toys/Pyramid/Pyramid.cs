@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Pyramid : Toy
 {
-    public GameObject hoopPrefab; 
+    public GameObject[] hoopPrefabs; // Array of hoop variants
 
     private float shootTimer;
     private float activeTimer;
-    private bool isShooting; 
+    private bool isShooting;
 
     public Pyramid()
     {
@@ -23,7 +23,8 @@ public class Pyramid : Toy
         type = "Pyramid";
     }
 
-    private void Start() {
+    private void Start()
+    {
         StartShotting();
     }
 
@@ -32,7 +33,7 @@ public class Pyramid : Toy
         if (isShooting)
         {
             shootTimer += Time.deltaTime;
-            if (shootTimer >= 1f / shotAmount) 
+            if (shootTimer >= 1f / shotAmount)
             {
                 shootTimer = 0f;
                 FireHoop();
@@ -57,13 +58,17 @@ public class Pyramid : Toy
     {
         Vector3 firePoint = transform.position + new Vector3(0, 0, 2);
 
-        if (hoopPrefab != null)
+        if (hoopPrefabs != null && hoopPrefabs.Length > 0)
         {
-            Instantiate(hoopPrefab, firePoint, Quaternion.identity, transform);
+            // Randomly select one of the hoop prefabs
+            int randomIndex = Random.Range(0, hoopPrefabs.Length);
+            GameObject selectedHoop = hoopPrefabs[randomIndex];
+
+            Instantiate(selectedHoop, firePoint, Quaternion.identity, transform);
         }
         else
         {
-            Debug.LogWarning("Hoop prefab is not assigned!");
+            Debug.LogWarning("Hoop prefab array is empty or not assigned!");
         }
     }
 

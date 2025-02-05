@@ -169,7 +169,12 @@ MonoBehaviour:
   timeActive: 10
   elapsedTime: 0
   type: Pyramid
-  hoopPrefab: {fileID: 2013007317043378810, guid: 24d76dbb8abb654428b7e21974c276f1, type: 3}
+  hoopPrefabs:
+  - {fileID: 8090360887220272457, guid: 248b4d40c88ec9d4f93b384c5c8432e1, type: 3}
+  - {fileID: 8253461885472905012, guid: aaf2ce329f40c3f45b0d384c210d92e4, type: 3}
+  - {fileID: 219835629535288179, guid: 227c8e199fe0363418981050b618e2b6, type: 3}
+  - {fileID: 4448093691796222809, guid: 3af478bca26811b4bb45dd44484bc3c4, type: 3}
+  - {fileID: 1568405351611000192, guid: 263708b71db601e41b20c8d76fe602f4, type: 3}
 --- !u!65 &8725420955263813483
 BoxCollider:
   m_ObjectHideFlags: 0
