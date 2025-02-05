@@ -29,6 +29,7 @@ public class Toy : MonoBehaviour
 public virtual void DestroyToy() {
     isAlive = false;
     GameObject smoke = Instantiate(Resources.Load("Smoke"), transform.position, Quaternion.identity) as GameObject;
+    GameObject confetti = Instantiate(Resources.Load("Confetti"), transform.position, Quaternion.identity) as GameObject;
     
     Destroy(this.gameObject);
 }
