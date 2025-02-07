@@ -26,15 +26,18 @@ public class NewLevelManager : MonoBehaviour
     {
         Nightmare.NightmareDestroyed += OnMonsterDied;
         baby.BabyScared += OnLost;
-        gameLoseScreen.RestartGame += () => LoadNextLevel(1);
+        gameLoseScreen.RestartGame += RestartGame;
+        gameWinScreen.RestartPressed += RestartGame;
         LoadLevel(levelIndex, 0);
-        //InvokeRepeating("UpdateScareLevel", 0f, 1f);
     }
+
 
     private void OnDestroy()
     {
         Nightmare.NightmareDestroyed -= OnMonsterDied;
     }
+
+    private void RestartGame() => LoadNextLevel(1);
 
     private AsyncOperation UnloadCurrentLevel()
     {

@@ -19,13 +19,14 @@ public class Baby : MonoBehaviour
 
     private void Start()
     {
-        levelManager.LevelLost += OnPlayerLost;
+        levelManager.LevelLost += ResetScareLevel;
+        levelManager.GameWon += ResetScareLevel;
         levelManager.LevelStarted += () => _shouldCheckScare = true;
         targetSliderValue = _currentScareLevel / maxScareLevel;
         Nightmare.IncreaseScareLevel += AdjustScare;
     }
 
-    private void OnPlayerLost()
+    private void ResetScareLevel()
     {
         _currentScareLevel = 0f;
     }

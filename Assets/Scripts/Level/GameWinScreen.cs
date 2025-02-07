@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameWinScreen : MonoBehaviour
 {
     [SerializeField] private NewLevelManager levelManager;
-    public event Action ContinuePressed = delegate { };
+    public event Action RestartPressed = delegate { };
 
     private void Awake()
     {
@@ -15,13 +15,14 @@ public class GameWinScreen : MonoBehaviour
         ToggleActiveStatus(false);
     }
 
-    public void OnContinuePressed()
+    public void OnRestartPressed()
     {
         ToggleActiveStatus(false);
-        ContinuePressed();
+        RestartPressed();
     }
 
-    private void ToggleActiveStatus(bool status) {
+    private void ToggleActiveStatus(bool status) 
+    {
         gameObject.SetActive(status);
     }
 
