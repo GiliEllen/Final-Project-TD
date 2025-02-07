@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpaceShipNoFlie
       objectReference: {fileID: 0}
+    - target: {fileID: 4146314794932605847, guid: 6d328e82259d99a4f8d47da1ed2e6cc8, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 21963501645294508, guid: 6d328e82259d99a4f8d47da1ed2e6cc8, type: 3}
     - {fileID: 2126725072346833922, guid: 6d328e82259d99a4f8d47da1ed2e6cc8, type: 3}

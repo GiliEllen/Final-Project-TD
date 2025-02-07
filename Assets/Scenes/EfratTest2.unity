@@ -2421,6 +2421,10 @@ PrefabInstance:
       propertyPath: baby
       value: 
       objectReference: {fileID: 1177344997}
+    - target: {fileID: 4582802707527524151, guid: 8e05265406fe0524aa8d06a7b71e9a82, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5003638628798829720, guid: 8e05265406fe0524aa8d06a7b71e9a82, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3235,6 +3239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1585069827}
+  - component: {fileID: 1585069828}
   m_Layer: 0
   m_Name: Skull
   m_TagString: Untagged
@@ -3261,6 +3266,27 @@ Transform:
   - {fileID: 8256308906479269608}
   m_Father: {fileID: 755646321689664052}
   m_LocalEulerAnglesHint: {x: 0.464, y: -0.022, z: -5.531}
+--- !u!65 &1585069828
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585069826}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1597696047 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5416987285411062728, guid: 1cd703c8e685db2499fc2a66fec7354e, type: 3}
@@ -4158,6 +4184,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5409444919172049679, guid: a3fb4cb3acdd283409c1e24227b80ad4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5409444919172049679, guid: a3fb4cb3acdd283409c1e24227b80ad4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
@@ -4352,6 +4382,18 @@ PrefabInstance:
     - target: {fileID: 8759235761003261595, guid: a3fb4cb3acdd283409c1e24227b80ad4, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: StartPlacementFromButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 9065705996782061915, guid: a3fb4cb3acdd283409c1e24227b80ad4, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9065705996782061915, guid: a3fb4cb3acdd283409c1e24227b80ad4, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9065705996782061915, guid: a3fb4cb3acdd283409c1e24227b80ad4, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
