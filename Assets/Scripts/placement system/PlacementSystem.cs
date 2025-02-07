@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using static UnityEngine.UI.Image;
+using System;
 
 public class PlacementSystem : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class PlacementSystem : MonoBehaviour
 
     [SerializeField] private LayerMask placementObstructionsLayerMask;
     [SerializeField] private NewLevelManager levelManager;
+    public event Action DraggingToy = delegate { };
+    //public event Action ToyPlaced = delegate { };
 
     private void Start()
     {
@@ -40,6 +43,7 @@ public class PlacementSystem : MonoBehaviour
         StartPlacement(ID);
         if (selectedObjectIndex >= 0)
         {
+            DraggingToy();
             gridVisualization.SetActive(true);
             preview.StartShowingPlacementPreview(database.objectsData[selectedObjectIndex].PrefabPreview, database.objectsData[selectedObjectIndex].Size);
         }
