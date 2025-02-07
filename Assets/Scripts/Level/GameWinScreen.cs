@@ -11,7 +11,7 @@ public class GameWinScreen : MonoBehaviour
 
     private void Awake()
     {
-        levelManager.LevelCompleted += () => ToggleActiveStatus(true);
+        levelManager.GameWon += () => ToggleActiveStatus(true);
         ToggleActiveStatus(false);
     }
 

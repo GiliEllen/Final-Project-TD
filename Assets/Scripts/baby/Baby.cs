@@ -22,6 +22,7 @@ public class Baby : MonoBehaviour
         levelManager.LevelLost += OnPlayerLost;
         levelManager.LevelStarted += () => _shouldCheckScare = true;
         targetSliderValue = _currentScareLevel / maxScareLevel;
+        Nightmare.IncreaseScareLevel += AdjustScare;
     }
 
     private void OnPlayerLost()
@@ -29,12 +30,13 @@ public class Baby : MonoBehaviour
         _currentScareLevel = 0f;
     }
 
- private void Update()
+    private void Update()
     {
         if (scareLevelSlider != null)
         {
             targetSliderValue = Mathf.Clamp(_currentScareLevel / maxScareLevel, 0, 1);
-            scareLevelSlider.value = Mathf.Lerp(scareLevelSlider.value, targetSliderValue, smoothSpeed * Time.deltaTime);
+            scareLevelSlider.value = Mathf.Lerp(scareLevelSlider.value, targetSliderValue, 
+                smoothSpeed * Time.deltaTime);
             scareText.text = " " + _currentScareLevel + " / " + maxScareLevel; 
         }
     }

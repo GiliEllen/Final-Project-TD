@@ -125,15 +125,14 @@ MonoBehaviour:
   gridHeight: 1
   isAlive: 1
   speed: 1.8
-  plane: {fileID: 0}
   timeToInitialize: 0
-  babyWall: {fileID: 0}
   touchedWall: 0
   scareLevelAppear: 10
-  scareLevelPassive: 0
+  scareLevelPassive: 8
   scareLevelReachWall: 30
   scareLevelDisappear: -30
   isInvisible: 0
+  scareLevelIncreaseFrequency: 2
 --- !u!54 &6782666973110517254
 Rigidbody:
   m_ObjectHideFlags: 0

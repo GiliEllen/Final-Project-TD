@@ -2186,10 +2186,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 705781790170219687, guid: 8e05265406fe0524aa8d06a7b71e9a82, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnContinuePressed
-      objectReference: {fileID: 0}
     - target: {fileID: 3055851404782552375, guid: 8e05265406fe0524aa8d06a7b71e9a82, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -5598,26 +5594,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1487984786}
     - target: {fileID: 622777859969006808, guid: 324d71a14b1bbc74fa8a8562902f7d74, type: 3}
-      propertyPath: toyButtons.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 622777859969006808, guid: 324d71a14b1bbc74fa8a8562902f7d74, type: 3}
-      propertyPath: toyButtons.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 622777859969006808, guid: 324d71a14b1bbc74fa8a8562902f7d74, type: 3}
-      propertyPath: toyButtons.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 622777859969006808, guid: 324d71a14b1bbc74fa8a8562902f7d74, type: 3}
-      propertyPath: toyButtons.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 622777859969006808, guid: 324d71a14b1bbc74fa8a8562902f7d74, type: 3}
-      propertyPath: placementButtons.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 622777859969006808, guid: 324d71a14b1bbc74fa8a8562902f7d74, type: 3}
       propertyPath: placementButtons.Array.data[0]
       value: 
       objectReference: {fileID: 1979286588}
@@ -5633,10 +5609,6 @@ PrefabInstance:
       propertyPath: placementButtons.Array.data[3]
       value: 
       objectReference: {fileID: 885167135}
-    - target: {fileID: 622777859969006808, guid: 324d71a14b1bbc74fa8a8562902f7d74, type: 3}
-      propertyPath: placementObstructionsLayerMask.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 2188831672095790587, guid: 324d71a14b1bbc74fa8a8562902f7d74, type: 3}
       propertyPath: sceneCamera
       value: 
@@ -5648,18 +5620,6 @@ PrefabInstance:
     - target: {fileID: 3671376654019192440, guid: 324d71a14b1bbc74fa8a8562902f7d74, type: 3}
       propertyPath: m_Name
       value: BuildingSystem
-      objectReference: {fileID: 0}
-    - target: {fileID: 3896481966853688527, guid: 324d71a14b1bbc74fa8a8562902f7d74, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4500826147344543807, guid: 324d71a14b1bbc74fa8a8562902f7d74, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7355872131122595909, guid: 324d71a14b1bbc74fa8a8562902f7d74, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

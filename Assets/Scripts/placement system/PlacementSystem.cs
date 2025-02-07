@@ -108,11 +108,11 @@ public class PlacementSystem : MonoBehaviour
         Vector3 validPosition = GetValidPositionInsideGrid(gridPosition, objectWidth);
 
         Vector2 size = database.objectsData[selectedObjectIndex].Size;
-        // if (database.objectsData[selectedObjectIndex].Name != "Rocket" && !IsPositionAvailable(validPosition, size))
-        // {
-        //     StopPlacement();
-        //     return;
-        // }
+        if (database.objectsData[selectedObjectIndex].Name != "Rocket" && !IsPositionAvailable(validPosition, size))
+        {
+            StopPlacement();
+            return;
+        }
 
         GameObject newObject = Instantiate(database.objectsData[selectedObjectIndex].Prefab);
         newObject.transform.position = new(validPosition.x, 1.5F, validPosition.z);
