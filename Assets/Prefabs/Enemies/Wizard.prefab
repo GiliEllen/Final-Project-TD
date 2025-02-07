@@ -127,8 +127,8 @@ MonoBehaviour:
   speed: 0.8
   timeToInitialize: 0
   touchedWall: 0
-  scareLevelAppear: 15
-  scareLevelPassive: 15
+  scareLevelAppear: 10
+  scareLevelPassive: 5
   scareLevelReachWall: 0
   scareLevelDisappear: -15
   isInvisible: 0

@@ -128,11 +128,11 @@ MonoBehaviour:
   timeToInitialize: 0
   touchedWall: 0
   scareLevelAppear: 10
-  scareLevelPassive: 8
+  scareLevelPassive: 6
   scareLevelReachWall: 30
   scareLevelDisappear: -30
   isInvisible: 0
-  scareLevelIncreaseFrequency: 2
+  scareLevelIncreaseFrequency: 3
 --- !u!54 &6782666973110517254
 Rigidbody:
   m_ObjectHideFlags: 0

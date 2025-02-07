@@ -60,7 +60,7 @@ public class Wizard : Nightmare
             toy.TakeDamage(damage);
         }
 
-        DestroyNightmare();
+        DestroyNightmare(false);
     }
 
 

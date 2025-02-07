@@ -21,6 +21,7 @@ public class BabyWall : MonoBehaviour
             baby.AdjustScare(enemy.scareLevelReachWall);
             enemy.touchedWall = true;
             enemy.isMoving = false;
+            Destroy(enemy.gameObject);
         } 
     }
 
