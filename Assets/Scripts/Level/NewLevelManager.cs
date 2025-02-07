@@ -37,7 +37,7 @@ public class NewLevelManager : MonoBehaviour
         Nightmare.NightmareDestroyed -= OnMonsterDied;
     }
 
-    private void RestartGame() => LoadNextLevel(1);
+    private void RestartGame() => LoadNextLevel(2);
 
     private AsyncOperation UnloadCurrentLevel()
     {
