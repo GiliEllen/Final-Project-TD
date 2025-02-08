@@ -100,7 +100,6 @@ public class PlacementSystem : MonoBehaviour
         return gridVisualization.transform.TransformPoint(localPosition);
     }
 
-    // Handle the OnDrop event and check the mouse position to see if it’s in the bottom 20% of the screen.
     private void HandleOnDrop()
     {
         if (selectedObjectIndex < 0) return;
@@ -113,15 +112,12 @@ public class PlacementSystem : MonoBehaviour
 
         Vector2 size = database.objectsData[selectedObjectIndex].Size;
 
-        // Check if the mouse position is within the bottom 20% of the screen.
         if (IsMouseInBottom20Percent())
         {
-            // Cancel placement by stopping the preview and returning without placing the object.
             StopPlacement();
             return;
         }
 
-        // Proceed with the placement
         GameObject newObject = Instantiate(database.objectsData[selectedObjectIndex].Prefab);
         newObject.transform.position = new(validPosition.x, 0.5F, validPosition.z);
         levelManager.MoveToLevelScene(newObject);
