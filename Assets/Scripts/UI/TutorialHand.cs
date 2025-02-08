@@ -22,7 +22,7 @@ public class TutorialHand : MonoBehaviour
     {
         _movementTween = transform.DOMove(_handLastLocation, 2f, false)
             .SetEase(Ease.InOutSine)
-            .SetLoops(-1, LoopType.Yoyo);
+            .SetLoops(-1, LoopType.Restart);
     }
 
     private void RemoveHand()
