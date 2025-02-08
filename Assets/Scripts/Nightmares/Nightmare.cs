@@ -27,7 +27,7 @@ public class Nightmare : MonoBehaviour
     public static event Action<float> NightmareDestroyed = delegate { };
     public static event Action<float> IncreaseScareLevel = delegate { };
     private bool isMovementDelayed = false;
-    private CancellationTokenSource _cts;
+    protected CancellationTokenSource _cts;
 
     protected async virtual void Awake()
     {
