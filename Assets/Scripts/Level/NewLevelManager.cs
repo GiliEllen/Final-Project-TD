@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 public class NewLevelManager : MonoBehaviour
 {
     [SerializeField] private int _numberOfMonsters;
-    [SerializeField] private int levelIndex;
+    [SerializeField] private int levelIndex = 4;
     private const string BaseLevelSceneName = "Level";
     [SerializeField] private float delayBetweenLevels;
     [SerializeField] private GameWinScreen gameWinScreen;

@@ -48,7 +48,9 @@ public class Ghost : Nightmare
         Vector3 currentPosition = transform.position;
         float randomX = Random.Range(-4, 6);  
         transform.position = new Vector3(Mathf.Round(randomX) +0.5f, currentPosition.y, currentPosition.z);
-        isMoving = true;
+        if (!touchedWall) {
+            isMoving = true;
+        }
     }
 
       private void Update()

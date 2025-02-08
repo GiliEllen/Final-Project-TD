@@ -39,7 +39,9 @@ public class Nightmare : MonoBehaviour
 
     protected virtual void OnDestroy()
     {
-       _cts.Dispose();
+        if (_cts != null) {
+            _cts.Dispose();
+        }
     }
 
     private async Task DelayActivation()

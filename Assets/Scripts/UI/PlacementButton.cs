@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlacementButton : MonoBehaviour
 {
     public float coolDown; 
     private float coolDownTimer; 
     private bool isOnCooldown; 
-
+    public TMP_Text CoolDownText;
     private Button button; 
 
     private void Start()
@@ -37,6 +38,7 @@ public class PlacementButton : MonoBehaviour
         if (isOnCooldown)
         {
             coolDownTimer -= Time.deltaTime;
+            // CoolDownText.text = coolDownTimer.ToString();
 
             if (coolDownTimer <= 0f)
             {
