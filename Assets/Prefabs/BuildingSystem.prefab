@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 4500826147344543807}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -374,10 +374,15 @@ MonoBehaviour:
   database: {fileID: 11400000, guid: 3f7373b2211589946bcd19a24063575f, type: 2}
   gridVisualization: {fileID: 4500826147344543807}
   preview: {fileID: 1001451324381425525}
-  placementButtons: []
+  placementButtons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   placementObstructionsLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 192
+  levelManager: {fileID: 0}
 --- !u!1 &7355872131122595909
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,6 +478,7 @@ MonoBehaviour:
   placementLayermask:
     serializedVersion: 2
     m_Bits: 1
+  levelManager: {fileID: 0}
 --- !u!1001 &2634118209473276958
 PrefabInstance:
   m_ObjectHideFlags: 0

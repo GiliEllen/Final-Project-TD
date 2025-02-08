@@ -166,7 +166,7 @@ MonoBehaviour:
   gridWidth: 2
   gridHeight: 2
   isAlive: 1
-  timeActive: 10
+  timeActive: 7
   elapsedTime: 0
   type: Pyramid
   hoopPrefabs:

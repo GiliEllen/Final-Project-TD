@@ -125,15 +125,14 @@ MonoBehaviour:
   gridHeight: 1
   isAlive: 1
   speed: 0.8
-  plane: {fileID: 0}
   timeToInitialize: 0
-  babyWall: {fileID: 0}
   touchedWall: 0
   scareLevelAppear: 10
-  scareLevelPassive: 0
+  scareLevelPassive: 5
   scareLevelReachWall: 0
   scareLevelDisappear: -15
   isInvisible: 0
+  scareLevelIncreaseFrequency: 5
   attackChargeTime: 8
   wizardCharge: {fileID: 97234259503496709}
   minDamage: 5

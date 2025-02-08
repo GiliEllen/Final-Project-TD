@@ -3,6 +3,7 @@ using System.Collections;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,10 +12,7 @@ public class NewLevelManager : MonoBehaviour
     [SerializeField] private int _numberOfMonsters;
     [SerializeField] private int levelIndex;
     private const string BaseLevelSceneName = "Level";
-    private const int VictorySceneIndex = 7;
-    private const int GameOverSceneIndex = 8;
     [SerializeField] private float delayBetweenLevels;
-    private bool _wasEndSceneLoaded;
     [SerializeField] private GameWinScreen gameWinScreen;
     [SerializeField] private GameLoseScreen gameLoseScreen;
     [SerializeField] private Baby baby;
@@ -22,21 +20,24 @@ public class NewLevelManager : MonoBehaviour
     public event Action LevelStarted = delegate { };
     public event Action LevelCompleted = delegate { };
     public event Action LevelLost = delegate { };
+    public event Action GameWon = delegate { };
 
     private void Start()
     {
-        gameWinScreen.ContinuePressed += () => LoadNextLevel(levelIndex + 1);
         Nightmare.NightmareDestroyed += OnMonsterDied;
         baby.BabyScared += OnLost;
-        gameLoseScreen.RestartGame += () => LoadNextLevel(1);
+        gameLoseScreen.RestartGame += RestartGame;
+        gameWinScreen.RestartPressed += RestartGame;
         LoadLevel(levelIndex, 0);
-        InvokeRepeating("UpdateScareLevel", 0f, 1f);
     }
+
 
     private void OnDestroy()
     {
         Nightmare.NightmareDestroyed -= OnMonsterDied;
     }
+
+    private void RestartGame() => LoadNextLevel(2);
 
     private AsyncOperation UnloadCurrentLevel()
     {
@@ -55,6 +56,10 @@ public class NewLevelManager : MonoBehaviour
         if (_numberOfMonsters <= 0)
         {
             LevelCompleted();
+            int nextLevelIndex = levelIndex + 1;
+            if (IsThereNextLevel(nextLevelIndex))
+                LoadNextLevel(nextLevelIndex);
+            else GameWon();
         }
     }
 
@@ -71,18 +76,11 @@ public class NewLevelManager : MonoBehaviour
         if (delay > 0)
             await Task.Delay(TimeSpan.FromSeconds(delay));
 
-        bool isNextSceneEndScene = IsNextSceneEndScene(nextLevelIndex);
-        if (isNextSceneEndScene && _wasEndSceneLoaded)
-            return;
+ 
         levelIndex = nextLevelIndex;
         AsyncOperation loadLevelOperation =
             SceneManager.LoadSceneAsync(GetLevelSceneName(levelIndex), LoadSceneMode.Additive);
-        if (isNextSceneEndScene)
-        {
-            _wasEndSceneLoaded = true;
-            //loadLevelOperation.completed += (_) => OnEndSceneLoaded();
-        }
-        else loadLevelOperation.completed += OnLevelLoaded;
+        loadLevelOperation.completed += OnLevelLoaded;
     }
 
     private void OnLevelLoaded(AsyncOperation op)
@@ -90,17 +88,6 @@ public class NewLevelManager : MonoBehaviour
         LevelStarted();
         CalculateNumberOfMonstersInLevel();
     }
-
-    private bool IsNextSceneEndScene(int nextLevelIndex)
-    {
-        return nextLevelIndex == GameOverSceneIndex || nextLevelIndex == VictorySceneIndex;
-    }
-
-    /*private void OnEndSceneLoaded()
-    {
-        RetryButton retryButton = FindFirstObjectByType<RetryButton>();
-        retryButton.GameRestarted += () => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }*/
 
     private string GetLevelSceneName(int levelIndex)
     {
@@ -126,5 +113,12 @@ public class NewLevelManager : MonoBehaviour
     private void UpdateScareLevel()
     {
         baby.AdjustScare(1 * _numberOfMonsters);
+    }
+
+    private bool IsThereNextLevel(int nextLevelIndex)
+    {
+        string scenePath = SceneUtility.GetScenePathByBuildIndex(nextLevelIndex + 1);
+        int loadedSceneBuildIndex = SceneUtility.GetBuildIndexByScenePath(scenePath);
+        return loadedSceneBuildIndex > 0;
     }
 }

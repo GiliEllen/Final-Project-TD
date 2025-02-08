@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using static UnityEngine.UI.Image;
+using System;
 
 public class PlacementSystem : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class PlacementSystem : MonoBehaviour
 
     [SerializeField] private LayerMask placementObstructionsLayerMask;
     [SerializeField] private NewLevelManager levelManager;
+    public event Action DraggingToy = delegate { };
+    //public event Action ToyPlaced = delegate { };
 
     private void Start()
     {
@@ -40,6 +43,7 @@ public class PlacementSystem : MonoBehaviour
         StartPlacement(ID);
         if (selectedObjectIndex >= 0)
         {
+            DraggingToy();
             gridVisualization.SetActive(true);
             preview.StartShowingPlacementPreview(database.objectsData[selectedObjectIndex].PrefabPreview, database.objectsData[selectedObjectIndex].Size);
         }
@@ -108,11 +112,11 @@ public class PlacementSystem : MonoBehaviour
         Vector3 validPosition = GetValidPositionInsideGrid(gridPosition, objectWidth);
 
         Vector2 size = database.objectsData[selectedObjectIndex].Size;
-        // if (database.objectsData[selectedObjectIndex].Name != "Rocket" && !IsPositionAvailable(validPosition, size))
-        // {
-        //     StopPlacement();
-        //     return;
-        // }
+        if (database.objectsData[selectedObjectIndex].Name != "Rocket" && !IsPositionAvailable(validPosition, size))
+        {
+            StopPlacement();
+            return;
+        }
 
         GameObject newObject = Instantiate(database.objectsData[selectedObjectIndex].Prefab);
         newObject.transform.position = new(validPosition.x, 1.5F, validPosition.z);
