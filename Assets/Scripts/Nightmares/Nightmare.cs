@@ -37,13 +37,6 @@ public class Nightmare : MonoBehaviour
         ScareLevelUpdate();
     }
 
-    protected virtual void OnDestroy()
-    {
-        if (_cts != null) {
-            _cts.Dispose();
-        }
-    }
-
     private async Task DelayActivation()
     {
         gameObject.SetActive(false); 
@@ -77,7 +70,10 @@ public class Nightmare : MonoBehaviour
         {
             await Task.Delay(TimeSpan.FromSeconds(scareLevelIncreaseFrequency));
             if (_cts.IsCancellationRequested)
+            {
+                _cts.Dispose();
                 return;
+            }
             IncreaseScareLevel(scareLevelPassive);
         }
     }
