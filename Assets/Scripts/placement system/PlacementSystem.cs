@@ -35,7 +35,7 @@ public class PlacementSystem : MonoBehaviour
 
         StopPlacement();
         inputManager.OnDrag += UpdatePlacementIndicators;
-        inputManager.OnDrop += PlaceStructure;
+        inputManager.OnDrop += HandleOnDrop; // Changed to HandleOnDrop
     }
 
     public void StartPlacementFromButton(int ID)
@@ -92,15 +92,16 @@ public class PlacementSystem : MonoBehaviour
         Vector3 meshMax = gridMeshCollider.bounds.max;
 
         float maxAllowedX = meshMax.x - sizeX;
+        float maxAllowedZ = meshMax.z - database.objectsData[selectedObjectIndex].Size.y;
 
         localPosition.x = Mathf.Clamp(localPosition.x, meshMin.x, maxAllowedX);
-        localPosition.z = Mathf.Clamp(localPosition.z, meshMin.z, meshMax.z);
+        localPosition.z = Mathf.Clamp(localPosition.z, meshMin.z, maxAllowedZ);
 
         return gridVisualization.transform.TransformPoint(localPosition);
     }
 
-
-    private void PlaceStructure()
+    // Handle the OnDrop event and check the mouse position to see if it’s in the bottom 20% of the screen.
+    private void HandleOnDrop()
     {
         if (selectedObjectIndex < 0) return;
 
@@ -108,24 +109,36 @@ public class PlacementSystem : MonoBehaviour
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
 
         float objectWidth = database.objectsData[selectedObjectIndex].Size.x;
-
         Vector3 validPosition = GetValidPositionInsideGrid(gridPosition, objectWidth);
 
         Vector2 size = database.objectsData[selectedObjectIndex].Size;
-        // if (database.objectsData[selectedObjectIndex].Name != "Rocket" && !IsPositionAvailable(validPosition, size))
-        // {
-        //     StopPlacement();
-        //     return;
-        // }
 
+        // Check if the mouse position is within the bottom 20% of the screen.
+        if (IsMouseInBottom20Percent())
+        {
+            // Cancel placement by stopping the preview and returning without placing the object.
+            StopPlacement();
+            return;
+        }
+
+        // Proceed with the placement
         GameObject newObject = Instantiate(database.objectsData[selectedObjectIndex].Prefab);
-        newObject.transform.position = new(validPosition.x, 1.5F, validPosition.z);
+        newObject.transform.position = new(validPosition.x, 0.5F, validPosition.z);
         levelManager.MoveToLevelScene(newObject);
 
         PlacementButton buttonAtIndex = placementButtons[selectedObjectIndex];
         buttonAtIndex.StartCooldown();
 
         StopPlacement();
+    }
+
+    // Method to check if the mouse is in the bottom 20% of the screen
+    private bool IsMouseInBottom20Percent()
+    {
+        float screenHeight = Screen.height;
+        float mouseY = Input.mousePosition.y;
+
+        return mouseY < screenHeight * 0.2f;
     }
 
     private bool IsPositionAvailable(Vector3 pos, Vector2 size)
@@ -135,5 +148,4 @@ public class PlacementSystem : MonoBehaviour
             Quaternion.identity, placementObstructionsLayerMask);
         return !res;
     }
-
 }
