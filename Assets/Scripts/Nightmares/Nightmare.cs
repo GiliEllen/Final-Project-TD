@@ -90,10 +90,9 @@ public class Nightmare : MonoBehaviour
         }
     }
 
-    protected virtual void DestroyNightmare(bool wasDestroyedByPlayer = true) {
+    public virtual void DestroyNightmare(bool wasDestroyedByPlayer = true) {
         isAlive = false;
         //TODO: add logic - remove from active playerToys
-        gameObject.SetActive(false);
         GameObject smoke = Instantiate(Resources.Load("DarkSmoke"), transform.position, Quaternion.identity) as GameObject;
 
         float scareLevelAddition = wasDestroyedByPlayer ? scareLevelDisappear : 0;

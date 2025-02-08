@@ -7,14 +7,15 @@ public class TutorialHand : MonoBehaviour
 {
     [SerializeField] private Transform endTransfrom;
     private Vector3 _handLastLocation;
-    [SerializeField] private PlacementSystem placementSystem;
+    private PlacementSystem _placementSystem;
     private Tween _movementTween;
 
     private void Start()
     {
         _handLastLocation = endTransfrom.position;
         Destroy(endTransfrom.gameObject);
-        placementSystem.DraggingToy += RemoveHand;
+        _placementSystem = FindAnyObjectByType<PlacementSystem>();
+        _placementSystem.DraggingToy += RemoveHand;
         TutorialHandMovement();
     }
 
@@ -27,7 +28,7 @@ public class TutorialHand : MonoBehaviour
 
     private void RemoveHand()
     {
-        placementSystem.DraggingToy -= RemoveHand;
+        _placementSystem.DraggingToy -= RemoveHand;
         _movementTween.Kill();
         Destroy(gameObject);
     }
