@@ -3687,6 +3687,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelManager
       objectReference: {fileID: 0}
+    - target: {fileID: 874164917284378621, guid: a3fb4cb3acdd283409c1e24227b80ad4, type: 3}
+      propertyPath: coolDown
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1070504082003277207, guid: a3fb4cb3acdd283409c1e24227b80ad4, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3719,6 +3723,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 193280593}
+    - target: {fileID: 3514087961210536590, guid: a3fb4cb3acdd283409c1e24227b80ad4, type: 3}
+      propertyPath: coolDown
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3586135074389704410, guid: a3fb4cb3acdd283409c1e24227b80ad4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
