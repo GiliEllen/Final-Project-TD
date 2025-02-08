@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class NewLevelManager : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class NewLevelManager : MonoBehaviour
     public event Action LevelLost = delegate { };
     public event Action GameWon = delegate { };
 
+        // ClearAllCooldownTexts();
     private void Start()
     {
         Nightmare.NightmareDestroyed += OnMonsterDied;
@@ -76,7 +78,6 @@ public class NewLevelManager : MonoBehaviour
         if (delay > 0)
             await Task.Delay(TimeSpan.FromSeconds(delay));
 
- 
         levelIndex = nextLevelIndex;
         AsyncOperation loadLevelOperation =
             SceneManager.LoadSceneAsync(GetLevelSceneName(levelIndex), LoadSceneMode.Additive);
@@ -121,4 +122,5 @@ public class NewLevelManager : MonoBehaviour
         int loadedSceneBuildIndex = SceneUtility.GetBuildIndexByScenePath(scenePath);
         return loadedSceneBuildIndex > 0;
     }
+
 }

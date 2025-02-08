@@ -38,10 +38,11 @@ public class PlacementButton : MonoBehaviour
         if (isOnCooldown)
         {
             coolDownTimer -= Time.deltaTime;
-            // CoolDownText.text = coolDownTimer.ToString();
+            CoolDownText.text = Mathf.CeilToInt(coolDownTimer).ToString();
 
             if (coolDownTimer <= 0f)
-            {
+            { 
+                CoolDownText.text = "";
                 EnableButton();
             }
         }
@@ -83,7 +84,7 @@ public class PlacementButton : MonoBehaviour
                 trigger.enabled = true;
             }
         }
-
+        CoolDownText.text = "";
         isOnCooldown = false;
     }
 }
