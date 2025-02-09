@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 6911570939891854199}
   - component: {fileID: 9676289777243150}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Sleeping baby image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -451,8 +451,9 @@ GameObject:
   - component: {fileID: 4421403830356882737}
   - component: {fileID: 925998406432957745}
   - component: {fileID: 2080690008726300313}
+  - component: {fileID: 2175743924476128270}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Hanging toys
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -515,6 +516,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2175743924476128270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2195450824216163036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e4bb7659010994a81747055c66be65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 20
+  moveDuration: 2
 --- !u!1 &2665981185940871243
 GameObject:
   m_ObjectHideFlags: 0
