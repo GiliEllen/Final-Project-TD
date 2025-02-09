@@ -36,6 +36,8 @@ public class PlacementSystem : MonoBehaviour
         StopPlacement();
         inputManager.OnDrag += UpdatePlacementIndicators;
         inputManager.OnDrop += HandleOnDrop; // Changed to HandleOnDrop
+        levelManager.LevelCompleted += StopPlacement;
+        levelManager.LevelLost += StopPlacement;
     }
 
     public void StartPlacementFromButton(int ID)
