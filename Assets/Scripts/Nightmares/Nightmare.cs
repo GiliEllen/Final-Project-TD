@@ -31,9 +31,9 @@ public class Nightmare : MonoBehaviour
 
     protected async virtual void Awake()
     {
+        _cts = new CancellationTokenSource();
         await DelayActivation();
         IncreaseScareLevel(scareLevelAppear);
-        _cts = new CancellationTokenSource();
         ScareLevelUpdate();
     }
 
@@ -83,9 +83,8 @@ public class Nightmare : MonoBehaviour
 
         transform.DOShakePosition(0.3f, strength: 0.2f, vibrato: 10, randomness: 90);
 
-        if (hp <= 0 ) {
+        if (hp <= 0 && isAlive) 
             DestroyNightmare();
-        }
     }
 
     public virtual void DestroyNightmare(bool wasDestroyedByPlayer = true) {
