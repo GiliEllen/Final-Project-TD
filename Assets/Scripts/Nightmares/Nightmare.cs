@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using DG.Tweening;
+using System.Threading;
 
 public class Nightmare : MonoBehaviour
 {
@@ -21,14 +22,19 @@ public class Nightmare : MonoBehaviour
     public float scareLevelDisappear;
     public bool isInvisible;
     private bool activatePortal = true;
+    [SerializeField] private float scareLevelIncreaseFrequency;
     //public static event Action NightmareCreated = delegate { };
     public static event Action<float> NightmareDestroyed = delegate { };
-
+    public static event Action<float> IncreaseScareLevel = delegate { };
     private bool isMovementDelayed = false;
+    private CancellationTokenSource _cts;
 
     protected async virtual void Awake()
     {
         await DelayActivation();
+        IncreaseScareLevel(scareLevelAppear);
+        _cts = new CancellationTokenSource();
+        ScareLevelUpdate();
     }
 
     private async Task DelayActivation()
@@ -58,6 +64,20 @@ public class Nightmare : MonoBehaviour
         }
     }
 
+    protected async void ScareLevelUpdate()
+    {
+        while (true)
+        {
+            await Task.Delay(TimeSpan.FromSeconds(scareLevelIncreaseFrequency));
+            if (_cts.IsCancellationRequested)
+            {
+                _cts.Dispose();
+                return;
+            }
+            IncreaseScareLevel(scareLevelPassive);
+        }
+    }
+
     public void TakeDamage(float howMuch) {
         hp -= howMuch;
 
@@ -68,17 +88,18 @@ public class Nightmare : MonoBehaviour
         }
     }
 
-    public void DestroyNightmare() {
+    public virtual void DestroyNightmare(bool wasDestroyedByPlayer = true) {
         isAlive = false;
         //TODO: add logic - remove from active playerToys
-        gameObject.SetActive(false);
         GameObject smoke = Instantiate(Resources.Load("DarkSmoke"), transform.position, Quaternion.identity) as GameObject;
 
-        NightmareDestroyed(scareLevelDisappear);
+        float scareLevelAddition = wasDestroyedByPlayer ? scareLevelDisappear : 0;
+        NightmareDestroyed(scareLevelAddition);
+        _cts.Cancel();
         Destroy(gameObject);
     }
 
-    public virtual void Move() 
+    protected virtual void Move() 
     {
         if (isMoving)
         {

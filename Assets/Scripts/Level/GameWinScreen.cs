@@ -7,21 +7,22 @@ using UnityEngine.SceneManagement;
 public class GameWinScreen : MonoBehaviour
 {
     [SerializeField] private NewLevelManager levelManager;
-    public event Action ContinuePressed = delegate { };
+    public event Action RestartPressed = delegate { };
 
     private void Awake()
     {
-        levelManager.LevelCompleted += () => ToggleActiveStatus(true);
+        levelManager.GameWon += () => ToggleActiveStatus(true);
         ToggleActiveStatus(false);
     }
 
-    public void OnContinuePressed()
+    public void OnRestartPressed()
     {
         ToggleActiveStatus(false);
-        ContinuePressed();
+        RestartPressed();
     }
 
-    private void ToggleActiveStatus(bool status) {
+    private void ToggleActiveStatus(bool status) 
+    {
         gameObject.SetActive(status);
     }
 
