@@ -4007,6 +4007,10 @@ PrefabInstance:
       propertyPath: gameLoseScreen
       value: 
       objectReference: {fileID: 1265766550}
+    - target: {fileID: 8165451198165390449, guid: a3fb4cb3acdd283409c1e24227b80ad4, type: 3}
+      propertyPath: _numberOfMonsters
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
