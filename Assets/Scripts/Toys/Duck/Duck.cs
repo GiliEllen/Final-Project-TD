@@ -66,6 +66,9 @@ public class Duck : Toy
         {
            Deactivate();
         }
+        if (transform.position.z >= 14) {
+             Deactivate();
+        }
         
     }
 }
