@@ -76,6 +76,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Projectile
       objectReference: {fileID: 0}
+    - target: {fileID: 6317578925029434746, guid: b26c370af7867b64d8fe40e679a588a1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c5dd6df141c8fab42b4c4894bccfa118, type: 2}
+    - target: {fileID: 6317578925029434746, guid: b26c370af7867b64d8fe40e679a588a1, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: dcc1452be3d12ba47b119d5cb7436a84, type: 2}
+    - target: {fileID: 6317578925029434746, guid: b26c370af7867b64d8fe40e679a588a1, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: c1f7f5f9496c2ce438cd5a339a8bfd08, type: 2}
     - target: {fileID: 8632055958874330854, guid: b26c370af7867b64d8fe40e679a588a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
