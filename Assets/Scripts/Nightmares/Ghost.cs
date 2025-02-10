@@ -15,6 +15,8 @@ public class Ghost : Nightmare
 
      public float timeUntilDisappear = 3f;
      public float timeUntilReappear = 2f;
+    private Material previewMaterialPrefab;
+    private Material previewMaterialInstance;
     public Ghost()
     {
         hp = 15;
@@ -35,23 +37,38 @@ public class Ghost : Nightmare
         ghostRigidbody = GetComponent<Rigidbody>();
     }
 
-    public void GhostDisappear() {
-        isInvisible = true;
-        ghostRenderer.material = materialInvisible; 
-        ghostRigidbody.isKinematic = true;
-        isMoving = false;
+ public void GhostDisappear() {
+    isInvisible = true;
+    ghostRenderer.material = materialInvisible; 
+    ghostRigidbody.isKinematic = true;
+    isMoving = false;
+
+    // Disable all child objects
+    foreach (Transform child in transform) {
+        child.gameObject.SetActive(false);
     }
-    public void GhostReappear() {
-        isInvisible = false;
-        ghostRenderer.material = materialVisible;
-        ghostRigidbody.isKinematic = false;
-        Vector3 currentPosition = transform.position;
-        float randomX = Random.Range(-4, 6);  
-        transform.position = new Vector3(Mathf.Round(randomX) +0.5f, currentPosition.y, currentPosition.z);
-        if (!touchedWall) {
-            isMoving = true;
-        }
+}
+
+public void GhostReappear() {
+    isInvisible = false;
+    ghostRenderer.material = materialVisible;
+    ghostRigidbody.isKinematic = false;
+
+    // Move to a new position
+    Vector3 currentPosition = transform.position;
+    float randomX = Random.Range(-4, 5.5f);  
+    transform.position = new Vector3(Mathf.Round(randomX) + 0.5f, currentPosition.y, currentPosition.z);
+
+    // Re-enable all child objects
+    foreach (Transform child in transform) {
+        child.gameObject.SetActive(true);
     }
+
+    if (!touchedWall) {
+        isMoving = true;
+    }
+}
+
 
       private void Update()
     {
