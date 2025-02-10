@@ -214,6 +214,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6071242936159279369}
     m_Modifications:
+    - target: {fileID: -8710475164464291771, guid: 46cd42e5696557042ae6978218367f86, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 58cbb819e230af24c8f131d2a95d7310, type: 2}
     - target: {fileID: -8679921383154817045, guid: 46cd42e5696557042ae6978218367f86, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.12
@@ -254,6 +258,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3579805419222669447, guid: 46cd42e5696557042ae6978218367f86, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c522b19c0d7c8e84ea22b7ca70448ce5, type: 2}
+    - target: {fileID: -3189776928189623804, guid: 46cd42e5696557042ae6978218367f86, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 58cbb819e230af24c8f131d2a95d7310, type: 2}
+    - target: {fileID: -58754342625537402, guid: 46cd42e5696557042ae6978218367f86, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c522b19c0d7c8e84ea22b7ca70448ce5, type: 2}
     - target: {fileID: 919132149155446097, guid: 46cd42e5696557042ae6978218367f86, type: 3}
       propertyPath: m_Name
       value: DuckToy2
