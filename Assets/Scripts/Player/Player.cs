@@ -34,12 +34,12 @@ public class Player : MonoBehaviour
     public void UpdatePoints(int points)
     {
         Points += points;
-        GameObject textObject = GameObject.Find("pointsText");
-        if (textObject != null)
-        {
-            myText = textObject.GetComponent<TextMeshProUGUI>();
-        }
-        myText.text = $"Points: {Points}";
+        // GameObject textObject = GameObject.Find("pointsText");
+        // if (textObject != null)
+        // {
+        //     myText = textObject.GetComponent<TextMeshProUGUI>();
+        // }
+        // myText.text = $"Points: {Points}";
     }
 
     public void UnlockLevel(int level)
