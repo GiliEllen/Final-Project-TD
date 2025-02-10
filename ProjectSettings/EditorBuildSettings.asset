@@ -5,7 +5,35 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/Gili-test.unity
+    guid: 5d72e1715429d6344a59ae3ff886903d
+  - enabled: 0
+    path: Assets/Scenes/EstyLevelsTry.unity
+    guid: 27e39b58f2fde9043960f3abdbff088d
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  m_configObjects: {}
+    path: Assets/Scenes/MainMenu.unity
+    guid: d9286d2ff7431c34db91fa961039b741
+  - enabled: 1
+    path: Assets/Scenes/ShowcaseUpdated.unity
+    guid: b46f06579eb0d734b83a405b696fe14d
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level1.unity
+    guid: aeec178572bf95f44be60eb7907addea
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level3.unity
+    guid: ae406f78ec85bce46ac8cb54f2785477
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level4.unity
+    guid: f9344d85ad080844d85c60d2db02437d
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level5.unity
+    guid: f81fbb70f78b3604ba1c3fa52441f7ed
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level2.unity
+    guid: fc29ba7e16d99e24e991c99848cf65e0
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level6.unity
+    guid: e157e959a81b6e64080b218bb09a3893
+  m_configObjects:
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: dc02c66af8e651943bfb9e3f96adc44f, type: 2}
