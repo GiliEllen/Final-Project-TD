@@ -1396,9 +1396,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3183387263423169329}
-        m_TargetAssemblyTypeName: GameLoseScreen, Assembly-CSharp
-        m_MethodName: ReloadScene
+      - m_Target: {fileID: 7811015464986063960}
+        m_TargetAssemblyTypeName: GameWinScreen, Assembly-CSharp
+        m_MethodName: OnRestartPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2523,8 +2523,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3183387263423169329}
-        m_TargetAssemblyTypeName: GameLoseScreen, Assembly-CSharp
+      - m_Target: {fileID: 7811015464986063960}
+        m_TargetAssemblyTypeName: GameWinScreen, Assembly-CSharp
         m_MethodName: GoBack
         m_Mode: 1
         m_Arguments:

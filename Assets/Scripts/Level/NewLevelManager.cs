@@ -32,7 +32,6 @@ public class NewLevelManager : MonoBehaviour
         LoadLevel(levelIndex, 0);
     }
 
-
     private void OnDestroy()
     {
         Nightmare.NightmareDestroyed -= OnMonsterDied;

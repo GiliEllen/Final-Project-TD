@@ -15,6 +15,10 @@ public class GameWinScreen : MonoBehaviour
         ToggleActiveStatus(false);
     }
 
+    public void GoBack() {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void OnRestartPressed()
     {
         ToggleActiveStatus(false);

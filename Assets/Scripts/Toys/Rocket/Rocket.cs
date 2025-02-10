@@ -33,7 +33,6 @@ public class Rocket : Toy
     private void OnCollisionEnter(Collision collision)
     {
         Nightmare enemy = collision.gameObject.GetComponent<Nightmare>();
-        Debug.Log("heeeeeeeeeeeeeeeeeeeey");
         if (enemy != null)
         {
             if (!enemy.isInvisible) {    
