@@ -84,6 +84,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -3057028689041639106, guid: 3dfb9d2a98095184db61c940ca5143bf, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 29a84dca5c78940489411383b512f732, type: 2}
+    - target: {fileID: -2361462040947952773, guid: 3dfb9d2a98095184db61c940ca5143bf, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 46d8f262612eb264aa02dc0f39549c6c, type: 2}
+    - target: {fileID: -453070356030399577, guid: 3dfb9d2a98095184db61c940ca5143bf, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d248defb9ecbe740bf33b7a53cc3175, type: 2}
     - target: {fileID: 919132149155446097, guid: 3dfb9d2a98095184db61c940ca5143bf, type: 3}
       propertyPath: m_Name
       value: Pyramid
@@ -124,10 +136,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.8640001
       objectReference: {fileID: 0}
+    - target: {fileID: 7417475085731284002, guid: 3dfb9d2a98095184db61c940ca5143bf, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 382385a637da6b042b62dc0cb452b019, type: 2}
     - target: {fileID: 8126602506620921288, guid: 3dfb9d2a98095184db61c940ca5143bf, type: 3}
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8765351455870139299, guid: 3dfb9d2a98095184db61c940ca5143bf, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 97f1854a6c8b1c94aa45ace4c7e8f69f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
