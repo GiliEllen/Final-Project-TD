@@ -5,7 +5,7 @@ public class Duck : Toy
 {
     public float moveDuration = 2f; // Base duration for movement
     private float minX = -4f;
-    private float maxX = 4f;
+    private float maxX = 3f;
     private float minYRotation = 40f;
     private float maxYRotation = 150f;
     private float zSpeed = 20f; // Speed in the Z direction 
