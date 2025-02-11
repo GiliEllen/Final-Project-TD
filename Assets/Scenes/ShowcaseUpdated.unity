@@ -2198,6 +2198,10 @@ PrefabInstance:
       propertyPath: baby
       value: 
       objectReference: {fileID: 1177344997}
+    - target: {fileID: 3183387263423169329, guid: 8e05265406fe0524aa8d06a7b71e9a82, type: 3}
+      propertyPath: newLevelManager
+      value: 
+      objectReference: {fileID: 1487984786}
     - target: {fileID: 4257834307582144685, guid: 8e05265406fe0524aa8d06a7b71e9a82, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 113

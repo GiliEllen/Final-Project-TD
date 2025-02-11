@@ -13,6 +13,33 @@ public class Player : MonoBehaviour
     public Dictionary<string, HashSet<int>> PuzzleProgress { get; private set; } = new Dictionary<string, HashSet<int>>();
     public TextMeshProUGUI myText;
     public int teddyBearCount = 0;
+     private AudioSource audioSource;
+     public bool isGamePaused = false;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    public void PauseAudio()
+    {
+        if (audioSource.isPlaying)
+        {
+            audioSource.Pause();
+        }
+    }
+
+    public void ResumeAudio()
+    {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.UnPause();
+        }
+    }
+
+    public void ToggleIsGamePaused(bool status) {
+        isGamePaused = status;
+    }
 
     private void Awake()
     {

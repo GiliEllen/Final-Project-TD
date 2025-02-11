@@ -41,6 +41,10 @@ public class Nightmare : MonoBehaviour
     {
         gameObject.SetActive(false); 
         await Task.Delay(TimeSpan.FromSeconds(timeToInitialize));
+        Player playerComponent = GameObject.Find("Player")?.GetComponent<Player>();
+        if (playerComponent.isGamePaused) {
+            return;
+        }
         if (activatePortal) {
             GameObject portal = Instantiate(Resources.Load("EnemyPortal"), transform.position, Quaternion.identity) as GameObject;
         }

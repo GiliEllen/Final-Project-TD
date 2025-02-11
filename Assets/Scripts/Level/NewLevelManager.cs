@@ -9,6 +9,7 @@ using TMPro;
 
 public class NewLevelManager : MonoBehaviour
 {
+     private CancellationTokenSource pauseTokenSource = new CancellationTokenSource();
     [SerializeField] private int _numberOfMonsters;
     [SerializeField] private int levelIndex;
     private const string BaseLevelSceneName = "Level";
@@ -39,7 +40,7 @@ public class NewLevelManager : MonoBehaviour
 
     private void RestartGame() => LoadNextLevel(2);
 
-    private AsyncOperation UnloadCurrentLevel()
+    public AsyncOperation UnloadCurrentLevel()
     {
         AsyncOperation unloadLevelOperation = SceneManager.UnloadSceneAsync(GetLevelSceneName(levelIndex));
         return unloadLevelOperation;
@@ -71,10 +72,19 @@ public class NewLevelManager : MonoBehaviour
     }
 
 
-    private async void LoadLevel(int nextLevelIndex, float delay)
+ private async void LoadLevel(int nextLevelIndex, float delay)
     {
         if (delay > 0)
-            await Task.Delay(TimeSpan.FromSeconds(delay));
+        {
+            try
+            {
+                await Task.Delay(TimeSpan.FromSeconds(delay), pauseTokenSource.Token);
+            }
+            catch (TaskCanceledException)
+            {
+                return; 
+            }
+        }
 
         levelIndex = nextLevelIndex;
         AsyncOperation loadLevelOperation =
@@ -119,6 +129,17 @@ public class NewLevelManager : MonoBehaviour
         string scenePath = SceneUtility.GetScenePathByBuildIndex(nextLevelIndex + 1);
         int loadedSceneBuildIndex = SceneUtility.GetBuildIndexByScenePath(scenePath);
         return loadedSceneBuildIndex > 0;
+    }
+
+     // Pause and Resume Handling
+    public void PauseGame()
+    {
+        pauseTokenSource.Cancel();
+    }
+
+    public void ResumeGame()
+    {
+        pauseTokenSource = new CancellationTokenSource(); 
     }
 
 }
