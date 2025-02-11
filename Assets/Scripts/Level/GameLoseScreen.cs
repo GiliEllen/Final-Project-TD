@@ -26,10 +26,5 @@ public class GameLoseScreen : MonoBehaviour
 
     private void ToggleActiveStatus(bool status) {
         gameObject.SetActive(status);
-        if (status) {
-            Time.timeScale = 0f;
-        } else {
-            Time.timeScale = 1f;          
-        }
     }
 }
