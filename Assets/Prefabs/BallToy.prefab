@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b26c370af7867b64d8fe40e679a588a1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b26c370af7867b64d8fe40e679a588a1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -89,8 +89,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: c1f7f5f9496c2ce438cd5a339a8bfd08, type: 2}
     - target: {fileID: 8632055958874330854, guid: b26c370af7867b64d8fe40e679a588a1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 145.95999
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632055958874330854, guid: b26c370af7867b64d8fe40e679a588a1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 145.95999
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632055958874330854, guid: b26c370af7867b64d8fe40e679a588a1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 145.95999
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632055958874330854, guid: b26c370af7867b64d8fe40e679a588a1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 8632055958874330854, guid: b26c370af7867b64d8fe40e679a588a1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -98,7 +110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8632055958874330854, guid: b26c370af7867b64d8fe40e679a588a1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.22
       objectReference: {fileID: 0}
     - target: {fileID: 8632055958874330854, guid: b26c370af7867b64d8fe40e679a588a1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -183,8 +195,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 2
+  m_Center: {x: 1, y: 1, z: 1}
 --- !u!114 &1104294678909936411
 MonoBehaviour:
   m_ObjectHideFlags: 0
