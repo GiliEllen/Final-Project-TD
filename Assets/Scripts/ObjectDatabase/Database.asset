@@ -22,7 +22,7 @@ MonoBehaviour:
     <ID>k__BackingField: 1
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 7197353587444171559, guid: 09aceff1c59452b48b11c0c1a0a96496, type: 3}
-    <PrefabPreview>k__BackingField: {fileID: 6777860641484171083, guid: 83f6192c3b5ae6e428b05fe1b7b18a08, type: 3}
+    <PrefabPreview>k__BackingField: {fileID: 371470386819889276, guid: ab4d46d2ad53f854da5e52e13dbfca92, type: 3}
   - <Name>k__BackingField: Pyramid
     <ID>k__BackingField: 2
     <Size>k__BackingField: {x: 2, y: 2}

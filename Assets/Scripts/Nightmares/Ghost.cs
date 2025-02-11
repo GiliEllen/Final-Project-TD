@@ -56,7 +56,7 @@ public void GhostReappear() {
 
     // Move to a new position
     Vector3 currentPosition = transform.position;
-    float randomX = Random.Range(-4, 5.5f);  
+    float randomX = Random.Range(-3.5f, 3.5f);  
     transform.position = new Vector3(Mathf.Round(randomX) + 0.5f, currentPosition.y, currentPosition.z);
 
     // Re-enable all child objects
